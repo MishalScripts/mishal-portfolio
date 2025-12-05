@@ -270,6 +270,7 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            align-items: stretch;
         }
 
         .btn-primary {
@@ -283,8 +284,10 @@
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+            white-space: nowrap;
         }
 
         .btn-primary:hover {
@@ -303,6 +306,10 @@
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
         }
 
         .btn-secondary:hover {
@@ -313,7 +320,12 @@
 
         .github-dropdown {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
+            align-items: stretch;
+        }
+
+        .github-dropdown > .btn-secondary {
+            width: 100%;
         }
 
         .github-menu {
@@ -329,6 +341,7 @@
             min-width: 250px;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
             overflow: hidden;
+            z-index: 100;
         }
 
         .github-dropdown:hover .github-menu {
@@ -997,11 +1010,16 @@
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
+                align-items: stretch;
             }
 
-            .btn-primary, .btn-secondary, .github-dropdown {
+            .btn-primary, .btn-secondary {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .github-dropdown {
+                width: 100%;
             }
 
             .github-menu {
