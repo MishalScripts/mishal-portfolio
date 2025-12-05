@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M A Mohammed Mishal - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,10 +21,72 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--netflix-black);
             color: white;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(229, 9, 20, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.25;
+            }
+        }
+
+        /* All content above background */
+        nav, section, footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
@@ -52,10 +115,12 @@
         }
 
         .logo {
-            font-size: 32px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: var(--netflix-red);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
         }
 
         .nav-links {
@@ -73,18 +138,16 @@
         }
 
         .nav-links a:hover {
-            color: var(--netflix-light-gray);
+            color: var(--netflix-red);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(20,20,20,1)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23141414"/></svg>');
-            background-size: cover;
+            padding-top: 80px;
         }
 
         .hero-content {
@@ -104,9 +167,10 @@
 
         .hero-text h1 {
             font-size: 64px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .hero-text .name-highlight {
@@ -114,17 +178,31 @@
         }
 
         .hero-text .subtitle {
-            font-size: 24px;
+            font-size: 22px;
             color: var(--netflix-light-gray);
+            margin-bottom: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .current-role {
+            display: inline-block;
+            background: rgba(229, 9, 20, 0.15);
+            border: 1px solid var(--netflix-red);
+            padding: 12px 24px;
+            border-radius: 30px;
             margin-bottom: 30px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--netflix-red);
         }
 
         .hero-text .summary {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--netflix-light-gray);
             margin-bottom: 40px;
+            font-weight: 400;
         }
 
         .hero-buttons {
@@ -134,11 +212,11 @@
         }
 
         .btn-primary {
-            padding: 15px 40px;
+            padding: 16px 40px;
             background: var(--netflix-red);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -149,22 +227,67 @@
 
         .btn-primary:hover {
             background: #f40612;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
         }
 
         .btn-secondary {
-            padding: 15px 40px;
+            padding: 16px 40px;
             background: rgba(109, 109, 110, 0.7);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
             background: rgba(109, 109, 110, 0.9);
+            border-color: var(--netflix-red);
+        }
+
+        .github-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .github-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 9, 20, 0.3);
+            border-radius: 6px;
+            min-width: 200px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .github-dropdown:hover .github-menu {
+            display: block;
+        }
+
+        .github-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .github-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .github-menu a:hover {
+            background: rgba(229, 9, 20, 0.2);
+            color: var(--netflix-red);
         }
 
         .hero-image {
@@ -176,31 +299,45 @@
         .profile-card {
             background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.8));
             border: 2px solid rgba(229, 9, 20, 0.3);
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 40px;
             text-align: center;
             backdrop-filter: blur(10px);
         }
 
-        .profile-img {
-            width: 250px;
-            height: 250px;
+        .profile-img-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 30px;
             border-radius: 50%;
             border: 4px solid var(--netflix-red);
-            margin: 0 auto 30px;
-            object-fit: cover;
+            overflow: hidden;
             box-shadow: 0 0 40px rgba(229, 9, 20, 0.5);
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
         }
 
         .contact-info {
             font-size: 14px;
             color: var(--netflix-light-gray);
-            line-height: 2;
+            line-height: 2.2;
+            font-weight: 400;
         }
 
         .contact-info a {
             color: var(--netflix-red);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #f40612;
         }
 
         /* Section Styles */
@@ -212,11 +349,12 @@
 
         .section-title {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 50px;
             color: white;
             position: relative;
             display: inline-block;
+            letter-spacing: -1px;
         }
 
         .section-title::after {
@@ -227,30 +365,31 @@
             width: 100px;
             height: 4px;
             background: var(--netflix-red);
+            border-radius: 2px;
         }
 
         /* Resume Section */
         .resume-section {
-            background: linear-gradient(135deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.5));
+            background: linear-gradient(145deg, rgba(229, 9, 20, 0.08), rgba(20, 20, 20, 0.5));
             border: 2px solid rgba(229, 9, 20, 0.3);
-            border-radius: 10px;
+            border-radius: 16px;
             padding: 60px;
             text-align: center;
             margin-top: 40px;
         }
 
         .resume-preview {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 40px;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(229, 9, 20, 0.3);
         }
 
         .resume-preview iframe {
             width: 100%;
-            height: 600px;
+            height: 700px;
             border: none;
         }
 
@@ -266,7 +405,7 @@
             background: var(--netflix-red);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 18px;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -291,8 +430,8 @@
         .experience-card {
             background: rgba(255, 255, 255, 0.05);
             border-left: 4px solid var(--netflix-red);
-            padding: 30px;
-            border-radius: 8px;
+            padding: 35px;
+            border-radius: 12px;
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(30px);
@@ -312,26 +451,31 @@
             justify-content: space-between;
             align-items: start;
             margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .experience-card h3 {
-            font-size: 24px;
+            font-size: 26px;
             color: var(--netflix-red);
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         .experience-card .company {
             font-size: 18px;
             color: var(--netflix-light-gray);
             margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .experience-card .duration {
-            font-size: 14px;
-            color: var(--netflix-gray);
-            background: rgba(229, 9, 20, 0.2);
-            padding: 5px 15px;
+            font-size: 13px;
+            color: white;
+            background: rgba(229, 9, 20, 0.25);
+            padding: 8px 18px;
             border-radius: 20px;
+            font-weight: 600;
         }
 
         .experience-card ul {
@@ -342,9 +486,10 @@
         .experience-card li {
             padding-left: 25px;
             position: relative;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--netflix-light-gray);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-weight: 400;
         }
 
         .experience-card li::before {
@@ -352,6 +497,7 @@
             position: absolute;
             left: 0;
             color: var(--netflix-red);
+            font-weight: 700;
         }
 
         /* Skills Section */
@@ -363,8 +509,8 @@
 
         .skill-category {
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 8px;
+            padding: 35px;
+            border-radius: 12px;
             border: 1px solid rgba(229, 9, 20, 0.2);
             transition: all 0.3s ease;
             opacity: 0;
@@ -378,6 +524,7 @@
         .skill-category:hover {
             border-color: var(--netflix-red);
             background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
         }
 
         .skill-category h3 {
@@ -387,27 +534,30 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 700;
         }
 
         .skill-category p {
             color: var(--netflix-light-gray);
             line-height: 1.8;
+            font-weight: 400;
         }
 
         /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
         }
 
         .project-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(30px);
+            border: 1px solid rgba(229, 9, 20, 0.2);
         }
 
         .project-card.visible {
@@ -417,6 +567,7 @@
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(229, 9, 20, 0.3);
+            border-color: var(--netflix-red);
         }
 
         .project-banner {
@@ -425,26 +576,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             padding: 20px;
             text-align: center;
         }
 
         .project-content {
-            padding: 30px;
+            padding: 35px;
         }
 
         .project-content h3 {
             font-size: 24px;
             margin-bottom: 15px;
             color: white;
+            font-weight: 700;
         }
 
         .project-content p {
             color: var(--netflix-light-gray);
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 20px;
+            font-weight: 400;
         }
 
         .project-tech {
@@ -454,29 +607,32 @@
         }
 
         .tech-tag {
-            padding: 6px 14px;
+            padding: 8px 16px;
             background: rgba(229, 9, 20, 0.2);
             border: 1px solid var(--netflix-red);
             border-radius: 20px;
             font-size: 12px;
             color: white;
+            font-weight: 600;
         }
 
         /* Certifications */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .cert-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 12px;
             border-left: 3px solid var(--netflix-red);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-30px);
+            cursor: pointer;
+            position: relative;
         }
 
         .cert-item.visible {
@@ -486,23 +642,85 @@
         .cert-item:hover {
             background: rgba(255, 255, 255, 0.08);
             transform: translateX(5px);
+            border-left-width: 5px;
         }
 
         .cert-item h4 {
             color: white;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 18px;
         }
 
         .cert-item p {
             color: var(--netflix-gray);
             font-size: 14px;
+            font-weight: 500;
+        }
+
+        .cert-item::after {
+            content: '🔍 Click to view';
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 11px;
+            color: var(--netflix-red);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cert-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Modal for certificates */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(229, 9, 20, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--netflix-red);
         }
 
         /* Contact Section */
         .contact-section {
             text-align: center;
             padding: 100px 60px;
-            background: linear-gradient(to bottom, var(--netflix-black), var(--netflix-dark));
         }
 
         .social-links {
@@ -510,11 +728,12 @@
             justify-content: center;
             gap: 30px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid var(--netflix-red);
             border-radius: 50%;
@@ -523,21 +742,27 @@
             justify-content: center;
             text-decoration: none;
             color: white;
-            font-size: 24px;
+            font-size: 26px;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
             background: var(--netflix-red);
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.5);
         }
 
         /* Footer */
         footer {
             background: var(--netflix-dark);
             text-align: center;
-            padding: 40px;
+            padding: 50px;
             color: var(--netflix-gray);
+            font-weight: 400;
+        }
+
+        footer p {
+            font-size: 14px;
         }
 
         /* Animations */
@@ -583,6 +808,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .resume-preview iframe {
+                height: 600px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -607,16 +836,27 @@
             }
 
             .resume-preview iframe {
-                height: 400px;
+                height: 500px;
+            }
+
+            .experience-header {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(229,9,20,0.3), transparent); top: 10%; left: 10%;"></div>
+        <div class="gradient-orb" style="width: 500px; height: 500px; background: radial-gradient(circle, rgba(229,9,20,0.2), transparent); bottom: 10%; right: 10%; animation-delay: 2s;"></div>
+        <div class="gradient-orb" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(229,9,20,0.25), transparent); top: 50%; left: 50%; animation-delay: 4s;"></div>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">MISHAL</div>
+            <div class="logo">M.MISHAL</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
@@ -634,17 +874,26 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Hi, I'm <span class="name-highlight">M A Mohammed Mishal</span></h1>
-                <p class="subtitle">Information Science Engineering Student | AI Enthusiast | Game QA Tester</p>
+                <p class="subtitle">Information Science Engineering Student | AI Enthusiast</p>
+                <div class="current-role">🎮 Currently: Game QA Tester @ Indium Software</div>
                 <p class="summary">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation. Dedicated to building a career that merges technical expertise with real-world impact.</p>
                 <div class="hero-buttons">
                     <a href="#resume" class="btn-primary">📄 View Resume</a>
                     <a href="#contact" class="btn-primary">📧 Get In Touch</a>
-                    <a href="https://github.com/MishalHQ" target="_blank" class="btn-secondary">View GitHub</a>
+                    <div class="github-dropdown">
+                        <a href="#" class="btn-secondary">💻 GitHub Profiles ▼</a>
+                        <div class="github-menu">
+                            <a href="https://github.com/MishalScripts" target="_blank">🔴 MishalScripts (Main)</a>
+                            <a href="https://github.com/MishalHQ" target="_blank">⚡ MishalHQ</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-card">
-                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/d94d6940-3136-4b85-9bdd-71fe436ec164/2025-12-05T13-52-15-846Z-8f2feb32-chat-image-1764942735828-0.jpg" alt="M A Mohammed Mishal" class="profile-img">
+                    <div class="profile-img-container">
+                        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/d94d6940-3136-4b85-9bdd-71fe436ec164/2025-12-05T13-52-15-846Z-8f2feb32-chat-image-1764942735828-0.jpg" alt="M A Mohammed Mishal" class="profile-img">
+                    </div>
                     <div class="contact-info">
                         <p>📍 Bangalore, Karnataka</p>
                         <p>📞 +91 8660455157</p>
@@ -752,7 +1001,7 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-banner">🧠 Stress Detection System</div>
+                <div class="project-banner">🧠 Stress Detection</div>
                 <div class="project-content">
                     <h3>Stress Detection Using Image Processing & Deep Learning</h3>
                     <p>Designed a stress-level detection system using Python, OpenCV, DNN, LBP, XGBoost, and FACS, focusing on analyzing facial cues for accurate classification. The research work was published and officially selected for presentation at IC3C-2025.</p>
@@ -768,7 +1017,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-banner">🔐 QR Code Safety System</div>
+                <div class="project-banner">🔐 QR Code Safety</div>
                 <div class="project-content">
                     <h3>QR Code Safety Detection System</h3>
                     <p>Developed a security-based application capable of analyzing and detecting unsafe or malicious QR codes. The system verifies the authenticity of QR codes, identifies potential threats such as phishing or malware links, and enhances user safety through real-time vulnerability analysis.</p>
@@ -780,38 +1029,52 @@
                     </div>
                 </div>
             </div>
+
+            <div class="project-card">
+                <div class="project-banner">💻 Echo OS</div>
+                <div class="project-content">
+                    <h3>Echo OS</h3>
+                    <p>An innovative operating system project focused on creating a modern, efficient, and user-friendly computing environment. Built with cutting-edge technologies to deliver seamless performance and enhanced user experience.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Operating System</span>
+                        <span class="tech-tag">System Design</span>
+                        <span class="tech-tag">Low-level Programming</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Certifications Section -->
     <section id="certifications">
         <h2 class="section-title">Certifications</h2>
+        <p style="color: var(--netflix-light-gray); margin-bottom: 30px; font-size: 16px;">Click on any certification to view details</p>
         <div class="cert-grid">
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: IIT Kharagpur - NPTEL E-Business Certification')">
                 <h4>E-Business Certification</h4>
                 <p>IIT Kharagpur - NPTEL</p>
             </div>
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: IIT Kharagpur - NPTEL Ethical Hacking Certification')">
                 <h4>Ethical Hacking Certification</h4>
                 <p>IIT Kharagpur - NPTEL</p>
             </div>
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: Infosys Springboard - Software Engineering Fundamentals')">
                 <h4>Software Engineering Fundamentals</h4>
                 <p>Infosys Springboard - Developing and Testing</p>
             </div>
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: Simplilearn - Ethical Hacking 101')">
                 <h4>Ethical Hacking 101</h4>
                 <p>Simplilearn</p>
             </div>
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: Forage - PwC Switzerland Cybersecurity Job Simulation')">
                 <h4>Cybersecurity Job Simulation</h4>
                 <p>Forage - PwC Switzerland</p>
             </div>
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: Forage - Accenture North America Data Analytics')">
                 <h4>Data Analytics & Visualization</h4>
                 <p>Forage - Accenture North America</p>
             </div>
-            <div class="cert-item">
+            <div class="cert-item" onclick="alert('Certificate verification: Infosys Springboard - Advanced Features in Java')">
                 <h4>Advanced Features in Java</h4>
                 <p>Infosys Springboard</p>
             </div>
@@ -821,12 +1084,13 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Let's Connect</h2>
-        <p style="font-size: 18px; color: var(--netflix-light-gray); max-width: 600px; margin: 20px auto;">
+        <p style="font-size: 18px; color: var(--netflix-light-gray); max-width: 600px; margin: 20px auto; line-height: 1.7;">
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
         </p>
         <div class="social-links">
             <a href="mailto:11b51570mishal@gmail.com" class="social-link" title="Email">📧</a>
-            <a href="https://github.com/MishalHQ" class="social-link" title="GitHub" target="_blank">💻</a>
+            <a href="https://github.com/MishalScripts" class="social-link" title="GitHub - MishalScripts" target="_blank">💻</a>
+            <a href="https://github.com/MishalHQ" class="social-link" title="GitHub - MishalHQ" target="_blank">⚡</a>
             <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" class="social-link" title="LinkedIn" target="_blank">💼</a>
             <a href="https://www.instagram.com/m_mishal._/" class="social-link" title="Instagram" target="_blank">📷</a>
             <a href="tel:+918660455157" class="social-link" title="Phone">📞</a>
@@ -836,10 +1100,25 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
-        <p style="margin-top: 10px; font-size: 12px;">Designed with Netflix-inspired aesthetics</p>
     </footer>
 
     <script>
+        // Create animated particles
+        function createParticles() {
+            const bg = document.querySelector('.animated-bg');
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 100 + 50 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                bg.appendChild(particle);
+            }
+        }
+        createParticles();
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -873,12 +1152,15 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
