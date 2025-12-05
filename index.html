@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M A Mohammed Mishal - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Mishal - Portfolio</title>
+    <meta name="description" content="Mishal - Information Science Engineering Student, AI Enthusiast, Game QA Tester">
+    
+    <!-- Google Fonts - Unique Professional Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // Replace with your actual Google Analytics ID
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -13,19 +26,49 @@
         }
 
         :root {
+            /* Dark Theme */
             --netflix-red: #E50914;
             --netflix-black: #141414;
             --netflix-dark: #000000;
             --netflix-gray: #808080;
             --netflix-light-gray: #b3b3b3;
+            
+            /* Light Theme */
+            --light-bg: #f8f9fa;
+            --light-surface: #ffffff;
+            --light-text: #1a1a1a;
+            --light-text-secondary: #4a5568;
+            --light-border: #e2e8f0;
+            --light-accent: #2563eb;
+            --light-accent-hover: #1d4ed8;
+            
+            /* Current Theme Variables */
+            --bg-primary: var(--netflix-black);
+            --bg-secondary: var(--netflix-dark);
+            --text-primary: #ffffff;
+            --text-secondary: var(--netflix-light-gray);
+            --accent-color: var(--netflix-red);
+            --border-color: rgba(229, 9, 20, 0.4);
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--light-bg);
+            --bg-secondary: var(--light-surface);
+            --text-primary: var(--light-text);
+            --text-secondary: var(--light-text-secondary);
+            --accent-color: var(--light-accent);
+            --border-color: var(--light-border);
+            --card-bg: var(--light-surface);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--netflix-black);
-            color: white;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
             position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         /* Enhanced Animated Background */
@@ -38,6 +81,11 @@
             z-index: 0;
             overflow: hidden;
             pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        [data-theme="light"] .animated-bg {
+            opacity: 0.3;
         }
 
         .gradient-orb {
@@ -46,6 +94,11 @@
             filter: blur(100px);
             opacity: 0.2;
             animation: float-orb 15s ease-in-out infinite;
+        }
+
+        [data-theme="light"] .gradient-orb {
+            filter: blur(120px);
+            opacity: 0.15;
         }
 
         @keyframes float-orb {
@@ -73,6 +126,12 @@
             opacity: 0.5;
         }
 
+        [data-theme="light"] .grid-overlay {
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+        }
+
         .spotlight {
             position: absolute;
             width: 600px;
@@ -80,6 +139,10 @@
             background: radial-gradient(circle, rgba(229, 9, 20, 0.15), transparent 70%);
             pointer-events: none;
             transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .spotlight {
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 70%);
         }
 
         /* All content above background */
@@ -99,10 +162,20 @@
             transition: all 0.3s ease;
         }
 
+        [data-theme="light"] nav {
+            background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.9) 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
         nav.scrolled {
             background: rgba(20, 20, 20, 0.98);
             backdrop-filter: blur(20px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="light"] nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -115,13 +188,24 @@
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
-            color: var(--netflix-red);
-            letter-spacing: 2px;
-            font-family: 'Inter', sans-serif;
+            color: var(--accent-color);
+            letter-spacing: 3px;
+            font-family: 'Space Grotesk', sans-serif;
             text-transform: uppercase;
             position: relative;
+            background: linear-gradient(135deg, var(--accent-color), #ff4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="light"] .logo {
+            background: linear-gradient(135deg, var(--light-accent), #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .logo::after {
@@ -131,12 +215,18 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: var(--netflix-red);
+            background: var(--accent-color);
             transition: width 0.3s ease;
         }
 
         .logo:hover::after {
             width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 35px;
         }
 
         .nav-links {
@@ -146,7 +236,7 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
@@ -162,7 +252,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--netflix-red);
+            background: var(--accent-color);
             transition: width 0.3s ease;
         }
 
@@ -171,7 +261,26 @@
         }
 
         .nav-links a:hover {
-            color: var(--netflix-red);
+            color: var(--accent-color);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 8px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-color);
         }
 
         /* Mobile Menu */
@@ -186,7 +295,7 @@
         .mobile-menu-btn span {
             width: 25px;
             height: 3px;
-            background: white;
+            background: var(--text-primary);
             transition: all 0.3s ease;
             border-radius: 2px;
         }
@@ -225,7 +334,14 @@
         }
 
         .hero-text .name-highlight {
-            background: linear-gradient(135deg, var(--netflix-red), #ff4444);
+            background: linear-gradient(135deg, var(--accent-color), #ff4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="light"] .hero-text .name-highlight {
+            background: linear-gradient(135deg, var(--light-accent), #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -233,7 +349,7 @@
 
         .hero-text .subtitle {
             font-size: 22px;
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             margin-bottom: 20px;
             font-weight: 500;
             line-height: 1.5;
@@ -242,15 +358,20 @@
         .current-role {
             display: inline-block;
             background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.1));
-            border: 2px solid var(--netflix-red);
+            border: 2px solid var(--accent-color);
             padding: 14px 28px;
             border-radius: 30px;
             margin-bottom: 30px;
             font-size: 15px;
             font-weight: 700;
-            color: white;
+            color: var(--text-primary);
             box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
             transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .current-role {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.05));
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.2);
         }
 
         .current-role:hover {
@@ -261,7 +382,7 @@
         .hero-text .summary {
             font-size: 17px;
             line-height: 1.8;
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             margin-bottom: 40px;
             font-weight: 400;
         }
@@ -270,11 +391,12 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .btn-primary {
             padding: 18px 45px;
-            background: linear-gradient(135deg, var(--netflix-red), #c40812);
+            background: linear-gradient(135deg, var(--accent-color), #c40812);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -287,6 +409,11 @@
             box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
         }
 
+        [data-theme="light"] .btn-primary {
+            background: linear-gradient(135deg, var(--light-accent), var(--light-accent-hover));
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(229, 9, 20, 0.6);
@@ -294,21 +421,26 @@
 
         .btn-secondary {
             padding: 18px 45px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: var(--card-bg);
+            color: var(--text-primary);
             text-decoration: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 700;
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--border-color);
             backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
-            border-color: var(--netflix-red);
+            border-color: var(--accent-color);
             transform: translateY(-3px);
+        }
+
+        [data-theme="light"] .btn-secondary:hover {
+            background: var(--light-surface);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .github-dropdown {
@@ -322,13 +454,18 @@
             top: 100%;
             left: 0;
             margin-top: 10px;
-            background: rgba(20, 20, 20, 0.98);
+            background: var(--bg-secondary);
             backdrop-filter: blur(20px);
-            border: 2px solid rgba(229, 9, 20, 0.4);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             min-width: 250px;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
             overflow: hidden;
+        }
+
+        [data-theme="light"] .github-menu {
+            background: var(--light-surface);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
 
         .github-dropdown:hover .github-menu {
@@ -350,12 +487,12 @@
         .github-menu a {
             display: block;
             padding: 15px 25px;
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .github-menu a:last-child {
@@ -364,8 +501,12 @@
 
         .github-menu a:hover {
             background: rgba(229, 9, 20, 0.3);
-            color: var(--netflix-red);
+            color: var(--accent-color);
             padding-left: 35px;
+        }
+
+        [data-theme="light"] .github-menu a:hover {
+            background: rgba(37, 99, 235, 0.1);
         }
 
         .hero-image {
@@ -375,8 +516,8 @@
         }
 
         .profile-card {
-            background: linear-gradient(145deg, rgba(229, 9, 20, 0.15), rgba(20, 20, 20, 0.9));
-            border: 2px solid rgba(229, 9, 20, 0.4);
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
+            border: 2px solid var(--border-color);
             border-radius: 20px;
             padding: 45px;
             text-align: center;
@@ -385,9 +526,18 @@
             transition: all 0.3s ease;
         }
 
+        [data-theme="light"] .profile-card {
+            background: var(--light-surface);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
         .profile-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 30px 80px rgba(229, 9, 20, 0.3);
+        }
+
+        [data-theme="light"] .profile-card:hover {
+            box-shadow: 0 30px 80px rgba(37, 99, 235, 0.2);
         }
 
         .profile-img-container {
@@ -395,10 +545,14 @@
             height: 280px;
             margin: 0 auto 35px;
             border-radius: 50%;
-            border: 5px solid var(--netflix-red);
+            border: 5px solid var(--accent-color);
             overflow: hidden;
             box-shadow: 0 0 50px rgba(229, 9, 20, 0.6);
             position: relative;
+        }
+
+        [data-theme="light"] .profile-img-container {
+            box-shadow: 0 0 50px rgba(37, 99, 235, 0.3);
         }
 
         .profile-img {
@@ -415,13 +569,13 @@
 
         .contact-info {
             font-size: 15px;
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             line-height: 2.4;
             font-weight: 500;
         }
 
         .contact-info a {
-            color: var(--netflix-red);
+            color: var(--accent-color);
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -442,7 +596,7 @@
             font-size: 52px;
             font-weight: 900;
             margin-bottom: 60px;
-            color: white;
+            color: var(--text-primary);
             position: relative;
             display: inline-block;
             letter-spacing: -2px;
@@ -455,19 +609,131 @@
             left: 0;
             width: 120px;
             height: 5px;
-            background: linear-gradient(90deg, var(--netflix-red), transparent);
+            background: linear-gradient(90deg, var(--accent-color), transparent);
             border-radius: 3px;
         }
 
-        /* Resume Section - MOBILE OPTIMIZED */
+        /* Suggestions Box */
+        .suggestions-section {
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 60px;
+            margin-top: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .suggestions-section {
+            background: var(--light-surface);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .suggestions-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .form-group input,
+        [data-theme="light"] .form-group textarea,
+        [data-theme="light"] .form-group select {
+            background: var(--light-bg);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+        }
+
+        [data-theme="light"] .form-group input:focus,
+        [data-theme="light"] .form-group textarea:focus,
+        [data-theme="light"] .form-group select:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--accent-color), #c40812);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+        }
+
+        [data-theme="light"] .submit-btn {
+            background: linear-gradient(135deg, var(--light-accent), var(--light-accent-hover));
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(229, 9, 20, 0.6);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+            animation: slideDown 0.3s ease;
+        }
+
+        /* Resume Section */
         .resume-section {
-            background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.6));
-            border: 2px solid rgba(229, 9, 20, 0.4);
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
+            border: 2px solid var(--border-color);
             border-radius: 20px;
             padding: 60px;
             text-align: center;
             margin-top: 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .resume-section {
+            background: var(--light-surface);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         }
 
         .resume-preview {
@@ -478,6 +744,10 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 25px 70px rgba(229, 9, 20, 0.4);
+        }
+
+        [data-theme="light"] .resume-preview {
+            box-shadow: 0 25px 70px rgba(37, 99, 235, 0.2);
         }
 
         .resume-preview iframe {
@@ -496,7 +766,7 @@
 
         .btn-download {
             padding: 20px 55px;
-            background: linear-gradient(135deg, var(--netflix-red), #c40812);
+            background: linear-gradient(135deg, var(--accent-color), #c40812);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -507,6 +777,11 @@
             align-items: center;
             gap: 12px;
             box-shadow: 0 10px 35px rgba(229, 9, 20, 0.5);
+        }
+
+        [data-theme="light"] .btn-download {
+            background: linear-gradient(135deg, var(--light-accent), var(--light-accent-hover));
+            box-shadow: 0 10px 35px rgba(37, 99, 235, 0.3);
         }
 
         .btn-download:hover {
@@ -521,14 +796,19 @@
         }
 
         .experience-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-            border-left: 5px solid var(--netflix-red);
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
+            border-left: 5px solid var(--accent-color);
             padding: 40px;
             border-radius: 16px;
             transition: all 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .experience-card {
+            background: var(--light-surface);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .experience-card.visible {
@@ -539,6 +819,11 @@
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
             transform: translateX(15px);
             box-shadow: 0 15px 40px rgba(229, 9, 20, 0.2);
+        }
+
+        [data-theme="light"] .experience-card:hover {
+            background: var(--light-surface);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
         }
 
         .experience-header {
@@ -552,14 +837,14 @@
 
         .experience-card h3 {
             font-size: 28px;
-            color: var(--netflix-red);
+            color: var(--accent-color);
             margin-bottom: 8px;
             font-weight: 800;
         }
 
         .experience-card .company {
             font-size: 19px;
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             margin-bottom: 10px;
             font-weight: 600;
         }
@@ -574,6 +859,11 @@
             white-space: nowrap;
         }
 
+        [data-theme="light"] .experience-card .duration {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--light-accent);
+        }
+
         .experience-card ul {
             list-style: none;
             padding-left: 0;
@@ -583,7 +873,7 @@
             padding-left: 30px;
             position: relative;
             margin-bottom: 14px;
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             line-height: 1.8;
             font-weight: 400;
             font-size: 16px;
@@ -593,7 +883,7 @@
             content: '▸';
             position: absolute;
             left: 0;
-            color: var(--netflix-red);
+            color: var(--accent-color);
             font-weight: 900;
             font-size: 18px;
         }
@@ -606,14 +896,19 @@
         }
 
         .skill-category {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
             padding: 40px;
             border-radius: 16px;
-            border: 2px solid rgba(229, 9, 20, 0.3);
+            border: 2px solid var(--border-color);
             transition: all 0.4s ease;
             opacity: 0;
             transform: scale(0.9);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .skill-category {
+            background: var(--light-surface);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .skill-category.visible {
@@ -621,15 +916,20 @@
         }
 
         .skill-category:hover {
-            border-color: var(--netflix-red);
+            border-color: var(--accent-color);
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
             transform: translateY(-8px) scale(1);
             box-shadow: 0 20px 50px rgba(229, 9, 20, 0.3);
         }
 
+        [data-theme="light"] .skill-category:hover {
+            background: var(--light-surface);
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+        }
+
         .skill-category h3 {
             font-size: 24px;
-            color: var(--netflix-red);
+            color: var(--accent-color);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -638,7 +938,7 @@
         }
 
         .skill-category p {
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             line-height: 1.9;
             font-weight: 400;
             font-size: 16px;
@@ -652,14 +952,19 @@
         }
 
         .project-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
-            border: 2px solid rgba(229, 9, 20, 0.3);
+            border: 2px solid var(--border-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .project-card {
+            background: var(--light-surface);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .project-card.visible {
@@ -669,12 +974,16 @@
         .project-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 25px 60px rgba(229, 9, 20, 0.4);
-            border-color: var(--netflix-red);
+            border-color: var(--accent-color);
+        }
+
+        [data-theme="light"] .project-card:hover {
+            box-shadow: 0 25px 60px rgba(37, 99, 235, 0.2);
         }
 
         .project-banner {
             height: 220px;
-            background: linear-gradient(135deg, var(--netflix-red), #8b0000);
+            background: linear-gradient(135deg, var(--accent-color), #8b0000);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -684,6 +993,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        [data-theme="light"] .project-banner {
+            background: linear-gradient(135deg, var(--light-accent), #1e40af);
         }
 
         .project-banner::before {
@@ -714,12 +1027,12 @@
         .project-content h3 {
             font-size: 26px;
             margin-bottom: 18px;
-            color: white;
+            color: var(--text-primary);
             font-weight: 800;
         }
 
         .project-content p {
-            color: var(--netflix-light-gray);
+            color: var(--text-secondary);
             line-height: 1.8;
             margin-bottom: 25px;
             font-weight: 400;
@@ -735,16 +1048,21 @@
         .tech-tag {
             padding: 10px 18px;
             background: rgba(229, 9, 20, 0.25);
-            border: 2px solid var(--netflix-red);
+            border: 2px solid var(--accent-color);
             border-radius: 25px;
             font-size: 13px;
-            color: white;
+            color: var(--text-primary);
             font-weight: 700;
             transition: all 0.3s ease;
         }
 
+        [data-theme="light"] .tech-tag {
+            background: rgba(37, 99, 235, 0.15);
+            border-color: var(--light-accent);
+        }
+
         .tech-tag:hover {
-            background: var(--netflix-red);
+            background: var(--accent-color);
             transform: translateY(-2px);
         }
 
@@ -756,16 +1074,21 @@
         }
 
         .cert-item {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
             padding: 30px;
             border-radius: 16px;
-            border-left: 4px solid var(--netflix-red);
+            border-left: 4px solid var(--accent-color);
             transition: all 0.4s ease;
             opacity: 0;
             transform: translateX(-30px);
             cursor: pointer;
             position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] .cert-item {
+            background: var(--light-surface);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .cert-item.visible {
@@ -779,15 +1102,20 @@
             box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
         }
 
+        [data-theme="light"] .cert-item:hover {
+            background: var(--light-surface);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+        }
+
         .cert-item h4 {
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 10px;
             font-weight: 800;
             font-size: 20px;
         }
 
         .cert-item p {
-            color: var(--netflix-gray);
+            color: var(--text-secondary);
             font-size: 15px;
             font-weight: 600;
         }
@@ -798,7 +1126,7 @@
             top: 30px;
             right: 30px;
             font-size: 12px;
-            color: var(--netflix-red);
+            color: var(--accent-color);
             opacity: 0;
             transition: opacity 0.3s ease;
             font-weight: 700;
@@ -825,33 +1153,42 @@
         .social-link {
             width: 70px;
             height: 70px;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border: 3px solid var(--netflix-red);
+            background: linear-gradient(145deg, var(--card-bg), var(--bg-secondary));
+            border: 3px solid var(--accent-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: white;
+            color: var(--text-primary);
             font-size: 28px;
             transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
+        [data-theme="light"] .social-link {
+            background: var(--light-surface);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
         .social-link:hover {
-            background: var(--netflix-red);
+            background: var(--accent-color);
             transform: scale(1.2) rotate(5deg);
             box-shadow: 0 15px 50px rgba(229, 9, 20, 0.6);
         }
 
+        [data-theme="light"] .social-link:hover {
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.4);
+        }
+
         /* Footer */
         footer {
-            background: var(--netflix-dark);
+            background: var(--bg-secondary);
             text-align: center;
             padding: 60px;
-            color: var(--netflix-gray);
+            color: var(--text-secondary);
             font-weight: 500;
-            border-top: 1px solid rgba(229, 9, 20, 0.2);
+            border-top: 1px solid var(--border-color);
         }
 
         footer p {
@@ -887,7 +1224,7 @@
             }
         }
 
-        /* Responsive - ENHANCED MOBILE */
+        /* Responsive */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -954,8 +1291,8 @@
                 font-size: 36px;
             }
 
-            /* MOBILE RESUME FIX */
-            .resume-section {
+            .resume-section,
+            .suggestions-section {
                 padding: 30px 20px;
                 margin: 0;
             }
@@ -1044,7 +1381,7 @@
             }
 
             .logo {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .resume-preview iframe {
@@ -1053,7 +1390,7 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
     <!-- Enhanced Animated Background -->
     <div class="animated-bg">
         <div class="grid-overlay"></div>
@@ -1066,21 +1403,27 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">M.MISHAL</div>
-            <div class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="logo">Mishal</div>
+            <div class="nav-right">
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#suggestions">Suggestions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
             </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
         </div>
     </nav>
 
@@ -1263,7 +1606,7 @@
     <!-- Certifications Section -->
     <section id="certifications">
         <h2 class="section-title">Certifications</h2>
-        <p style="color: var(--netflix-light-gray); margin-bottom: 40px; font-size: 17px; font-weight: 500;">Click on any certification to view details</p>
+        <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 17px; font-weight: 500;">Click on any certification to view details</p>
         <div class="cert-grid">
             <div class="cert-item" onclick="alert('Certificate verification: IIT Kharagpur - NPTEL E-Business Certification')">
                 <h4>E-Business Certification</h4>
@@ -1296,10 +1639,50 @@
         </div>
     </section>
 
+    <!-- Suggestions Section -->
+    <section id="suggestions">
+        <h2 class="section-title">Suggestions & Recommendations</h2>
+        <div class="suggestions-section">
+            <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 17px; text-align: center; font-weight: 500;">
+                Your feedback helps me improve! Share your thoughts, suggestions, or recommendations below.
+            </p>
+            <form class="suggestions-form" id="suggestionsForm">
+                <div class="form-group">
+                    <label for="name">Name (Optional)</label>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="design">Design & UI/UX</option>
+                        <option value="content">Content & Information</option>
+                        <option value="technical">Technical Improvements</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="general">General Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Suggestion/Recommendation *</label>
+                    <textarea id="message" name="message" required placeholder="Share your thoughts, ideas, or recommendations..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">📤 Submit Suggestion</button>
+                <div class="success-message" id="successMessage">
+                    ✅ Thank you for your feedback! Your suggestion has been recorded.
+                </div>
+            </form>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Let's Connect</h2>
-        <p style="font-size: 19px; color: var(--netflix-light-gray); max-width: 650px; margin: 20px auto; line-height: 1.8; font-weight: 500;">
+        <p style="font-size: 19px; color: var(--text-secondary); max-width: 650px; margin: 20px auto; line-height: 1.8; font-weight: 500;">
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
         </p>
         <div class="social-links">
@@ -1318,6 +1701,32 @@
     </footer>
 
     <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const theme = body.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            
+            // Track theme change in analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'theme_change', {
+                    'theme': newTheme
+                });
+            }
+        });
+
         // Mouse spotlight effect
         const spotlight = document.getElementById('spotlight');
         document.addEventListener('mousemove', (e) => {
@@ -1390,6 +1799,69 @@
         const certItems = document.querySelectorAll('.cert-item');
         certItems.forEach((item, index) => {
             item.style.animationDelay = `${index * 0.05}s`;
+        });
+
+        // Suggestions Form Handler
+        const suggestionsForm = document.getElementById('suggestionsForm');
+        const successMessage = document.getElementById('successMessage');
+
+        suggestionsForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value || 'Anonymous',
+                email: document.getElementById('email').value || 'Not provided',
+                category: document.getElementById('category').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in localStorage (you can replace this with actual backend submission)
+            const suggestions = JSON.parse(localStorage.getItem('portfolioSuggestions') || '[]');
+            suggestions.push(formData);
+            localStorage.setItem('portfolioSuggestions', JSON.stringify(suggestions));
+
+            // Track in analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'suggestion_submitted', {
+                    'category': formData.category
+                });
+            }
+
+            // Show success message
+            successMessage.style.display = 'block';
+            suggestionsForm.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+
+            // Log to console (for development - remove in production)
+            console.log('Suggestion submitted:', formData);
+        });
+
+        // Track page views
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': 'Portfolio Home',
+                'page_location': window.location.href
+            });
+        }
+
+        // Track section views
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && typeof gtag !== 'undefined') {
+                    gtag('event', 'section_view', {
+                        'section_name': entry.target.id
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('section[id]').forEach(section => {
+            sectionObserver.observe(section);
         });
     </script>
 </body>
