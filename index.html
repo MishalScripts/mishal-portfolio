@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mishal - Portfolio</title>
+    <title>M A Mohammed Mishal - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -28,7 +28,7 @@
             position: relative;
         }
 
-        /* Enhanced Animated Background with Moving Particles */
+        /* Enhanced Animated Background */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -40,75 +40,23 @@
             pointer-events: none;
         }
 
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            background: rgba(229, 9, 20, 0.4);
-            border-radius: 50%;
-            animation: floatParticle linear infinite;
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100px) translateX(var(--drift)) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Geometric Shapes Moving */
-        .shape {
-            position: absolute;
-            border: 2px solid rgba(229, 9, 20, 0.3);
-            animation: moveShape linear infinite;
-        }
-
-        @keyframes moveShape {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotate));
-                opacity: 0;
-            }
-        }
-
         .gradient-orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
             opacity: 0.2;
-            animation: float-orb 20s ease-in-out infinite;
+            animation: float-orb 15s ease-in-out infinite;
         }
 
         @keyframes float-orb {
             0%, 100% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
+                transform: translate(0, 0) scale(1);
             }
-            25% {
-                transform: translate(100px, -80px) scale(1.2) rotate(90deg);
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
             }
-            50% {
-                transform: translate(-50px, 60px) scale(0.8) rotate(180deg);
-            }
-            75% {
-                transform: translate(80px, 40px) scale(1.1) rotate(270deg);
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
             }
         }
 
@@ -123,16 +71,6 @@
                 linear-gradient(90deg, rgba(229, 9, 20, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             opacity: 0.5;
-            animation: gridMove 30s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% {
-                transform: translate(0, 0);
-            }
-            100% {
-                transform: translate(50px, 50px);
-            }
         }
 
         .spotlight {
@@ -184,16 +122,6 @@
             font-family: 'Inter', sans-serif;
             text-transform: uppercase;
             position: relative;
-            animation: logoGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes logoGlow {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(229, 9, 20, 0.8), 0 0 30px rgba(229, 9, 20, 0.6);
-            }
         }
 
         .logo::after {
@@ -244,7 +172,6 @@
 
         .nav-links a:hover {
             color: var(--netflix-red);
-            transform: translateY(-2px);
         }
 
         /* Mobile Menu */
@@ -287,8 +214,6 @@
         .hero-text {
             opacity: 0;
             animation: fadeInLeft 1s ease forwards;
-            position: relative;
-            z-index: 10;
         }
 
         .hero-text h1 {
@@ -297,18 +222,6 @@
             margin-bottom: 20px;
             line-height: 1.1;
             letter-spacing: -2px;
-            animation: slideInFromLeft 1s ease-out;
-        }
-
-        @keyframes slideInFromLeft {
-            0% {
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .hero-text .name-highlight {
@@ -316,17 +229,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 3s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
         }
 
         .hero-text .subtitle {
@@ -335,16 +237,6 @@
             margin-bottom: 20px;
             font-weight: 500;
             line-height: 1.5;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
         }
 
         .current-role {
@@ -359,24 +251,11 @@
             color: white;
             box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
             transition: all 0.3s ease;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 8px 30px rgba(229, 9, 20, 0.5);
-            }
         }
 
         .current-role:hover {
-            transform: translateY(-2px) scale(1.05);
+            transform: translateY(-2px);
             box-shadow: 0 8px 30px rgba(229, 9, 20, 0.5);
-            animation: none;
         }
 
         .hero-text .summary {
@@ -391,7 +270,6 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            align-items: stretch;
         }
 
         .btn-primary {
@@ -405,27 +283,8 @@
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
             box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
         }
 
         .btn-primary:hover {
@@ -444,27 +303,6 @@
             transition: all 0.3s ease;
             border: 2px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-secondary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(229, 9, 20, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-secondary:hover::before {
-            left: 100%;
         }
 
         .btn-secondary:hover {
@@ -475,20 +313,15 @@
 
         .github-dropdown {
             position: relative;
-            display: inline-flex;
-            align-items: stretch;
-            z-index: 10000 !important;
-        }
-
-        .github-dropdown > .btn-secondary {
-            width: 100%;
+            display: inline-block;
         }
 
         .github-menu {
             display: none;
             position: absolute;
-            top: calc(100% + 10px);
+            top: 100%;
             left: 0;
+            margin-top: 10px;
             background: rgba(20, 20, 20, 0.98);
             backdrop-filter: blur(20px);
             border: 2px solid rgba(229, 9, 20, 0.4);
@@ -496,7 +329,6 @@
             min-width: 250px;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
             overflow: hidden;
-            z-index: 99999 !important;
         }
 
         .github-dropdown:hover .github-menu {
@@ -540,8 +372,6 @@
             opacity: 0;
             animation: fadeInRight 1s ease forwards;
             animation-delay: 0.3s;
-            position: relative;
-            z-index: 5;
         }
 
         .profile-card {
@@ -556,7 +386,7 @@
         }
 
         .profile-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
+            transform: translateY(-10px);
             box-shadow: 0 30px 80px rgba(229, 9, 20, 0.3);
         }
 
@@ -569,16 +399,6 @@
             overflow: hidden;
             box-shadow: 0 0 50px rgba(229, 9, 20, 0.6);
             position: relative;
-            animation: borderPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes borderPulse {
-            0%, 100% {
-                box-shadow: 0 0 50px rgba(229, 9, 20, 0.6);
-            }
-            50% {
-                box-shadow: 0 0 80px rgba(229, 9, 20, 0.9), 0 0 100px rgba(229, 9, 20, 0.6);
-            }
         }
 
         .profile-img {
@@ -590,7 +410,7 @@
         }
 
         .profile-card:hover .profile-img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .contact-info {
@@ -626,18 +446,6 @@
             position: relative;
             display: inline-block;
             letter-spacing: -2px;
-            animation: titleSlide 1s ease-out;
-        }
-
-        @keyframes titleSlide {
-            0% {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .section-title::after {
@@ -649,117 +457,9 @@
             height: 5px;
             background: linear-gradient(90deg, var(--netflix-red), transparent);
             border-radius: 3px;
-            animation: lineExpand 1s ease-out;
         }
 
-        @keyframes lineExpand {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 120px;
-            }
-        }
-
-        /* Suggestion Box Section */
-        .suggestion-section {
-            background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.6));
-            border: 2px solid rgba(229, 9, 20, 0.4);
-            border-radius: 20px;
-            padding: 60px;
-            margin-top: 80px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .suggestion-form {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            color: white;
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--netflix-red);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 180px;
-            resize: vertical;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--netflix-gray);
-        }
-
-        .btn-submit {
-            padding: 20px 60px;
-            background: linear-gradient(135deg, var(--netflix-red), #c40812);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 35px rgba(229, 9, 20, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-submit:hover::before {
-            left: 100%;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 50px rgba(229, 9, 20, 0.7);
-        }
-
-        .btn-submit:active {
-            transform: translateY(-2px);
-        }
-
-        /* Resume Section - NO FLOATING ANIMATION */
+        /* Resume Section - MOBILE OPTIMIZED */
         .resume-section {
             background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.6));
             border: 2px solid rgba(229, 9, 20, 0.4);
@@ -778,7 +478,6 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 25px 70px rgba(229, 9, 20, 0.4);
-            /* REMOVED FLOATING ANIMATION */
         }
 
         .resume-preview iframe {
@@ -808,23 +507,6 @@
             align-items: center;
             gap: 12px;
             box-shadow: 0 10px 35px rgba(229, 9, 20, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-download::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-download:hover::before {
-            left: 100%;
         }
 
         .btn-download:hover {
@@ -855,7 +537,7 @@
 
         .experience-card:hover {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-            transform: translateX(15px) scale(1.02);
+            transform: translateX(15px);
             box-shadow: 0 15px 40px rgba(229, 9, 20, 0.2);
         }
 
@@ -914,16 +596,6 @@
             color: var(--netflix-red);
             font-weight: 900;
             font-size: 18px;
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
         }
 
         /* Skills Section */
@@ -951,7 +623,7 @@
         .skill-category:hover {
             border-color: var(--netflix-red);
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-            transform: translateY(-8px) scale(1) rotate(2deg);
+            transform: translateY(-8px) scale(1);
             box-shadow: 0 20px 50px rgba(229, 9, 20, 0.3);
         }
 
@@ -995,7 +667,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
+            transform: translateY(-15px);
             box-shadow: 0 25px 60px rgba(229, 9, 20, 0.4);
             border-color: var(--netflix-red);
         }
@@ -1073,7 +745,7 @@
 
         .tech-tag:hover {
             background: var(--netflix-red);
-            transform: translateY(-2px) scale(1.1);
+            transform: translateY(-2px);
         }
 
         /* Certifications */
@@ -1102,7 +774,7 @@
 
         .cert-item:hover {
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-            transform: translateX(10px) scale(1.05);
+            transform: translateX(10px);
             border-left-width: 6px;
             box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
         }
@@ -1164,23 +836,12 @@
             font-size: 28px;
             transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
         }
 
         .social-link:hover {
             background: var(--netflix-red);
-            transform: scale(1.2) rotate(360deg);
+            transform: scale(1.2) rotate(5deg);
             box-shadow: 0 15px 50px rgba(229, 9, 20, 0.6);
-            animation: none;
         }
 
         /* Footer */
@@ -1226,7 +887,7 @@
             }
         }
 
-        /* Responsive */
+        /* Responsive - ENHANCED MOBILE */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -1293,7 +954,8 @@
                 font-size: 36px;
             }
 
-            .resume-section, .suggestion-section {
+            /* MOBILE RESUME FIX */
+            .resume-section {
                 padding: 30px 20px;
                 margin: 0;
             }
@@ -1336,17 +998,11 @@
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
-                align-items: stretch;
-                gap: 15px;
             }
 
-            .btn-primary, .btn-secondary {
+            .btn-primary, .btn-secondary, .github-dropdown {
                 width: 100%;
                 justify-content: center;
-            }
-
-            .github-dropdown {
-                width: 100%;
             }
 
             .github-menu {
@@ -1398,12 +1054,10 @@
     </style>
 </head>
 <body>
-    <!-- Enhanced Animated Background with Moving Particles -->
+    <!-- Enhanced Animated Background -->
     <div class="animated-bg">
         <div class="grid-overlay"></div>
         <div class="spotlight" id="spotlight"></div>
-        
-        <!-- Gradient Orbs -->
         <div class="gradient-orb" style="width: 500px; height: 500px; background: radial-gradient(circle, rgba(229,9,20,0.3), transparent); top: 5%; left: 5%;"></div>
         <div class="gradient-orb" style="width: 600px; height: 600px; background: radial-gradient(circle, rgba(229,9,20,0.25), transparent); bottom: 5%; right: 5%; animation-delay: 3s;"></div>
         <div class="gradient-orb" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(229,9,20,0.2), transparent); top: 50%; left: 50%; animation-delay: 6s;"></div>
@@ -1412,7 +1066,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">MISHAL</div>
+            <div class="logo">M.MISHAL</div>
             <div class="mobile-menu-btn">
                 <span></span>
                 <span></span>
@@ -1425,7 +1079,6 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#suggestions">Suggestions</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1440,15 +1093,13 @@
                 <div class="current-role">🎮 Currently: Game QA Tester @ Indium Software</div>
                 <p class="summary">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation. Dedicated to building a career that merges technical expertise with real-world impact.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">Get In Touch</a>
+                    <a href="#resume" class="btn-primary">📄 View Resume</a>
+                    <a href="#contact" class="btn-primary">📧 Get In Touch</a>
                     <div class="github-dropdown">
-                        <a href="#" class="btn-secondary">GitHub Projects ▼</a>
+                        <a href="#" class="btn-secondary">💻 GitHub Profiles ▼</a>
                         <div class="github-menu">
-                            <a href="https://github.com/MishalScripts/Automated-Attendance-System" target="_blank">Automated Attendance System</a>
-                            <a href="https://github.com/MishalScripts/Automated-Attendance-System-using-Face-Recognition" target="_blank">Face Recognition Attendance</a>
-                            <a href="https://github.com/MishalScripts/Automated-Attendance-System-using-QR-Code" target="_blank">QR Code Attendance</a>
-                            <a href="https://github.com/MishalScripts/Automated-Attendance-System-using-RFID" target="_blank">RFID Attendance</a>
-                            <a href="https://github.com/MishalScripts/Automated-Attendance-System-using-Fingerprint" target="_blank">Fingerprint Attendance</a>
+                            <a href="https://github.com/MishalScripts" target="_blank">🔴 MishalScripts (Main)</a>
+                            <a href="https://github.com/MishalHQ" target="_blank">⚡ MishalHQ</a>
                         </div>
                     </div>
                 </div>
@@ -1456,12 +1107,13 @@
             <div class="hero-image">
                 <div class="profile-card">
                     <div class="profile-img-container">
-                        <img src="https://raw.githubusercontent.com/MishalScripts/mishal-portfolio/main/photo.jpg" alt="Mishal" class="profile-img">
+                        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/d94d6940-3136-4b85-9bdd-71fe436ec164/2025-12-05T13-52-15-846Z-8f2feb32-chat-image-1764942735828-0.jpg" alt="M A Mohammed Mishal" class="profile-img">
                     </div>
                     <div class="contact-info">
-                        📧 <a href="mailto:officialzenvomart@gmail.com">officialzenvomart@gmail.com</a><br>
-                        📱 <a href="tel:+919353653653">+91 9353653653</a><br>
-                        📍 Bangalore, Karnataka, India
+                        <p>📍 Bangalore, Karnataka</p>
+                        <p>📞 +91 8660455157</p>
+                        <p>✉️ <a href="mailto:11b51570mishal@gmail.com">11b51570mishal@gmail.com</a></p>
+                        <p>🎓 B.M.S.I.T (2022-2026)</p>
                     </div>
                 </div>
             </div>
@@ -1470,17 +1122,17 @@
 
     <!-- Resume Section -->
     <section id="resume">
+        <h2 class="section-title">Resume</h2>
         <div class="resume-section">
-            <h2 class="section-title">My Resume</h2>
             <div class="resume-preview">
-                <iframe src="https://drive.google.com/file/d/1Uu-Uu_Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu/preview" allow="autoplay"></iframe>
+                <iframe src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/d94d6940-3136-4b85-9bdd-71fe436ec164/2025-12-05T13-43-07-759Z-cb29ea17-M_A_Mohammed_Mishal_Resume.pdf" title="M A Mohammed Mishal Resume"></iframe>
             </div>
             <div class="resume-actions">
-                <a href="https://drive.google.com/uc?export=download&id=1Uu-Uu_Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu" class="btn-download">
+                <a href="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/d94d6940-3136-4b85-9bdd-71fe436ec164/2025-12-05T13-43-07-759Z-cb29ea17-M_A_Mohammed_Mishal_Resume.pdf" download="M_A_Mohammed_Mishal_Resume.pdf" class="btn-download">
                     📥 Download Resume
                 </a>
-                <a href="https://drive.google.com/file/d/1Uu-Uu_Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu/view" target="_blank" class="btn-secondary">
-                    👁️ View Full Screen
+                <a href="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/d94d6940-3136-4b85-9bdd-71fe436ec164/2025-12-05T13-43-07-759Z-cb29ea17-M_A_Mohammed_Mishal_Resume.pdf" target="_blank" class="btn-secondary">
+                    🔍 View Full Screen
                 </a>
             </div>
         </div>
@@ -1488,7 +1140,7 @@
 
     <!-- Experience Section -->
     <section id="experience">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title">Professional Experience</h2>
         <div class="experience-grid">
             <div class="experience-card">
                 <div class="experience-header">
@@ -1496,29 +1148,41 @@
                         <h3>Game QA Tester</h3>
                         <p class="company">Indium Software</p>
                     </div>
-                    <span class="duration">Nov 2024 - Present</span>
+                    <span class="duration">November 2025 – Present</span>
                 </div>
                 <ul>
-                    <li>Conducting comprehensive testing of gaming applications to identify bugs, glitches, and performance issues</li>
-                    <li>Collaborating with development teams to ensure high-quality game releases</li>
-                    <li>Documenting test cases and providing detailed bug reports</li>
-                    <li>Participating in regression testing and quality assurance processes</li>
+                    <li>Tested PC game builds for functionality, stability, visual issues, and overall gameplay quality</li>
+                    <li>Logged detailed bug reports in Jira with clear steps, video evidence, and reproducible scenarios to support the development team</li>
+                    <li>Tools Used: Jira, TestRail, Slack, Teams</li>
                 </ul>
             </div>
 
             <div class="experience-card">
                 <div class="experience-header">
                     <div>
-                        <h3>Intern - Artificial Intelligence</h3>
-                        <p class="company">Verzeo</p>
+                        <h3>Artificial Intelligence Intern</h3>
+                        <p class="company">CodSoft</p>
                     </div>
-                    <span class="duration">Jun 2023 - Aug 2023</span>
+                    <span class="duration">September 2024 – October 2024</span>
                 </div>
                 <ul>
-                    <li>Developed and implemented machine learning models for real-world applications</li>
-                    <li>Worked on data preprocessing, feature engineering, and model optimization</li>
-                    <li>Collaborated with cross-functional teams on AI-driven projects</li>
-                    <li>Gained hands-on experience with Python, TensorFlow, and scikit-learn</li>
+                    <li>Independently developed AI-based solutions to enhance workflow efficiency</li>
+                    <li>Focused on training and deploying machine learning models</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>Web Development Intern</h3>
+                        <p class="company">SkillCraft Technology</p>
+                    </div>
+                    <span class="duration">September 2024 – October 2024</span>
+                </div>
+                <ul>
+                    <li>Designed and optimized user interfaces for web applications</li>
+                    <li>Worked on front-end development using HTML, CSS, JavaScript</li>
+                    <li>Received a Letter of Recommendation for reliable performance</li>
                 </ul>
             </div>
         </div>
@@ -1526,31 +1190,23 @@
 
     <!-- Skills Section -->
     <section id="skills">
-        <h2 class="section-title">Skills & Expertise</h2>
+        <h2 class="section-title">Technical Skills & Proficiency</h2>
         <div class="skills-container">
             <div class="skill-category">
-                <h3>💻 Programming Languages</h3>
-                <p>Python, Java, C, C++, JavaScript, SQL</p>
+                <h3>🔒 Cybersecurity</h3>
+                <p>Experienced in conducting risk assessments and implementing security protocols to safeguard data. Skilled in analyzing cyber threats and vulnerability assessment.</p>
             </div>
             <div class="skill-category">
-                <h3>🤖 AI & Machine Learning</h3>
-                <p>TensorFlow, Scikit-learn, Pandas, NumPy, Deep Learning, Neural Networks</p>
+                <h3>💻 Programming</h3>
+                <p><strong>Java, Python:</strong> Proficient in writing clean and efficient code for various applications, with strong problem-solving capabilities.</p>
             </div>
             <div class="skill-category">
                 <h3>🌐 Web Development</h3>
-                <p>HTML, CSS, JavaScript, React, Node.js, Express.js, MongoDB</p>
+                <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Proficient in creating responsive web designs and managing relational databases.</p>
             </div>
             <div class="skill-category">
-                <h3>🛠️ Tools & Technologies</h3>
-                <p>Git, GitHub, VS Code, Jupyter Notebook, Docker, Linux</p>
-            </div>
-            <div class="skill-category">
-                <h3>🎮 Game Testing</h3>
-                <p>Bug Tracking, Test Case Design, Regression Testing, Performance Testing</p>
-            </div>
-            <div class="skill-category">
-                <h3>💡 Soft Skills</h3>
-                <p>Problem Solving, Team Collaboration, Communication, Time Management, Adaptability</p>
+                <h3>🧪 QA & Testing</h3>
+                <p><strong>Jira, TestRail:</strong> Experienced in game testing, bug tracking, and quality assurance processes with detailed documentation.</p>
             </div>
         </div>
     </section>
@@ -1560,43 +1216,44 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-banner">🎯 Automated Attendance System</div>
+                <div class="project-banner">🧠 Stress Detection</div>
                 <div class="project-content">
-                    <h3>Multi-Method Attendance System</h3>
-                    <p>A comprehensive attendance management system implementing multiple authentication methods including Face Recognition, QR Code, RFID, and Fingerprint scanning.</p>
+                    <h3>Stress Detection Using Image Processing & Deep Learning</h3>
+                    <p>Designed a stress-level detection system using Python, OpenCV, DNN, LBP, XGBoost, and FACS, focusing on analyzing facial cues for accurate classification. The research work was published and officially selected for presentation at IC3C-2025.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">FACS</span>
+                        <span class="tech-tag">LBP</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-banner">🤖 AI-Powered Solutions</div>
+                <div class="project-banner">🔐 QR Code Safety</div>
                 <div class="project-content">
-                    <h3>Machine Learning Projects</h3>
-                    <p>Collection of AI and ML projects including predictive models, classification systems, and data analysis tools developed during internship and academic work.</p>
+                    <h3>QR Code Safety Detection System</h3>
+                    <p>Developed a security-based application capable of analyzing and detecting unsafe or malicious QR codes. The system verifies the authenticity of QR codes, identifies potential threats such as phishing or malware links, and enhances user safety through real-time vulnerability analysis.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">Security</span>
+                        <span class="tech-tag">QR Analysis</span>
+                        <span class="tech-tag">Threat Detection</span>
+                        <span class="tech-tag">Real-time Analysis</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-banner">🌐 Web Applications</div>
+                <div class="project-banner">💻 Echo OS</div>
                 <div class="project-content">
-                    <h3>Full-Stack Development</h3>
-                    <p>Various web applications built using modern frameworks and technologies, focusing on responsive design and user experience.</p>
+                    <h3>Echo OS</h3>
+                    <p>An innovative operating system project focused on creating a modern, efficient, and user-friendly computing environment. Built with cutting-edge technologies to deliver seamless performance and enhanced user experience.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">Operating System</span>
+                        <span class="tech-tag">System Design</span>
+                        <span class="tech-tag">Low-level Programming</span>
                     </div>
                 </div>
             </div>
@@ -1606,72 +1263,68 @@
     <!-- Certifications Section -->
     <section id="certifications">
         <h2 class="section-title">Certifications</h2>
+        <p style="color: var(--netflix-light-gray); margin-bottom: 40px; font-size: 17px; font-weight: 500;">Click on any certification to view details</p>
         <div class="cert-grid">
-            <div class="cert-item" onclick="window.open('https://www.coursera.org/account/accomplishments/verify/XXXXX', '_blank')">
-                <h4>🎓 Artificial Intelligence Certification</h4>
-                <p>Verzeo - 2023</p>
+            <div class="cert-item" onclick="alert('Certificate verification: IIT Kharagpur - NPTEL E-Business Certification')">
+                <h4>E-Business Certification</h4>
+                <p>IIT Kharagpur - NPTEL</p>
             </div>
-            <div class="cert-item" onclick="window.open('https://www.coursera.org/account/accomplishments/verify/XXXXX', '_blank')">
-                <h4>🐍 Python Programming</h4>
-                <p>Online Certification - 2022</p>
+            <div class="cert-item" onclick="alert('Certificate verification: IIT Kharagpur - NPTEL Ethical Hacking Certification')">
+                <h4>Ethical Hacking Certification</h4>
+                <p>IIT Kharagpur - NPTEL</p>
             </div>
-            <div class="cert-item" onclick="window.open('https://www.coursera.org/account/accomplishments/verify/XXXXX', '_blank')">
-                <h4>🌐 Web Development</h4>
-                <p>Online Certification - 2022</p>
+            <div class="cert-item" onclick="alert('Certificate verification: Infosys Springboard - Software Engineering Fundamentals')">
+                <h4>Software Engineering Fundamentals</h4>
+                <p>Infosys Springboard - Developing and Testing</p>
             </div>
-            <div class="cert-item" onclick="window.open('https://www.coursera.org/account/accomplishments/verify/XXXXX', '_blank')">
-                <h4>📊 Data Science Fundamentals</h4>
-                <p>Online Certification - 2023</p>
+            <div class="cert-item" onclick="alert('Certificate verification: Simplilearn - Ethical Hacking 101')">
+                <h4>Ethical Hacking 101</h4>
+                <p>Simplilearn</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Suggestions Section -->
-    <section id="suggestions">
-        <div class="suggestion-section">
-            <h2 class="section-title">Suggestions & Recommendations</h2>
-            <p style="text-align: center; color: var(--netflix-light-gray); margin-bottom: 40px; font-size: 17px;">
-                I value your feedback! Share your thoughts, suggestions, or recommendations to help me improve.
-            </p>
-            <form class="suggestion-form" action="mailto:officialzenvomart@gmail.com" method="post" enctype="text/plain">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="suggestion">Your Suggestion/Recommendation</label>
-                    <textarea id="suggestion" name="suggestion" placeholder="Share your thoughts, feedback, or recommendations..." required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Submit Suggestion</button>
-            </form>
+            <div class="cert-item" onclick="alert('Certificate verification: Forage - PwC Switzerland Cybersecurity Job Simulation')">
+                <h4>Cybersecurity Job Simulation</h4>
+                <p>Forage - PwC Switzerland</p>
+            </div>
+            <div class="cert-item" onclick="alert('Certificate verification: Forage - Accenture North America Data Analytics')">
+                <h4>Data Analytics & Visualization</h4>
+                <p>Forage - Accenture North America</p>
+            </div>
+            <div class="cert-item" onclick="alert('Certificate verification: Infosys Springboard - Advanced Features in Java')">
+                <h4>Advanced Features in Java</h4>
+                <p>Infosys Springboard</p>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section" id="contact">
+    <section id="contact" class="contact-section">
         <h2 class="section-title">Let's Connect</h2>
-        <p style="font-size: 19px; color: var(--netflix-light-gray); max-width: 700px; margin: 0 auto;">
-            I'm always open to discussing new opportunities, collaborations, or just having a chat about technology and innovation.
+        <p style="font-size: 19px; color: var(--netflix-light-gray); max-width: 650px; margin: 20px auto; line-height: 1.8; font-weight: 500;">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
         </p>
         <div class="social-links">
-            <a href="mailto:officialzenvomart@gmail.com" class="social-link" title="Email">📧</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link" title="LinkedIn">💼</a>
-            <a href="https://github.com/MishalScripts" target="_blank" class="social-link" title="GitHub">💻</a>
-            <a href="https://twitter.com/yourprofile" target="_blank" class="social-link" title="Twitter">🐦</a>
-            <a href="tel:+919353653653" class="social-link" title="Phone">📱</a>
+            <a href="mailto:11b51570mishal@gmail.com" class="social-link" title="Email">📧</a>
+            <a href="https://github.com/MishalScripts" class="social-link" title="GitHub - MishalScripts" target="_blank">💻</a>
+            <a href="https://github.com/MishalHQ" class="social-link" title="GitHub - MishalHQ" target="_blank">⚡</a>
+            <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" class="social-link" title="LinkedIn" target="_blank">💼</a>
+            <a href="https://www.instagram.com/m_mishal._/" class="social-link" title="Instagram" target="_blank">📷</a>
+            <a href="tel:+918660455157" class="social-link" title="Phone">📞</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 M A Mohammed Mishal. All rights reserved. | Built with passion and dedication</p>
+        <p>&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
     </footer>
 
     <script>
+        // Mouse spotlight effect
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.left = e.clientX - 300 + 'px';
+            spotlight.style.top = e.clientY - 300 + 'px';
+        });
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1680,13 +1333,6 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
-
-        // Spotlight effect
-        const spotlight = document.getElementById('spotlight');
-        document.addEventListener('mousemove', (e) => {
-            spotlight.style.left = e.clientX - 300 + 'px';
-            spotlight.style.top = e.clientY - 300 + 'px';
         });
 
         // Intersection Observer for animations
@@ -1708,97 +1354,42 @@
             observer.observe(el);
         });
 
-        // Create floating particles
-        function createParticles() {
-            const bg = document.querySelector('.animated-bg');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Random size between 3-8px
-                const size = Math.random() * 5 + 3;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                
-                // Random horizontal position
-                particle.style.left = Math.random() * 100 + '%';
-                
-                // Random animation duration between 15-30s
-                const duration = Math.random() * 15 + 15;
-                particle.style.animationDuration = duration + 's';
-                
-                // Random delay
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                
-                // Random horizontal drift
-                const drift = (Math.random() - 0.5) * 200;
-                particle.style.setProperty('--drift', drift + 'px');
-                
-                bg.appendChild(particle);
-            }
-        }
-
-        // Create geometric shapes
-        function createShapes() {
-            const bg = document.querySelector('.animated-bg');
-            const shapeCount = 15;
-            
-            for (let i = 0; i < shapeCount; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'shape';
-                
-                // Random size between 20-60px
-                const size = Math.random() * 40 + 20;
-                shape.style.width = size + 'px';
-                shape.style.height = size + 'px';
-                
-                // Random position
-                shape.style.left = Math.random() * 100 + '%';
-                shape.style.top = Math.random() * 100 + '%';
-                
-                // Random shape (circle or square)
-                if (Math.random() > 0.5) {
-                    shape.style.borderRadius = '50%';
-                }
-                
-                // Random animation duration between 20-40s
-                const duration = Math.random() * 20 + 20;
-                shape.style.animationDuration = duration + 's';
-                
-                // Random delay
-                shape.style.animationDelay = Math.random() * 10 + 's';
-                
-                // Random movement
-                const moveX = (Math.random() - 0.5) * 500;
-                const moveY = (Math.random() - 0.5) * 500;
-                const rotate = Math.random() * 720;
-                
-                shape.style.setProperty('--move-x', moveX + 'px');
-                shape.style.setProperty('--move-y', moveY + 'px');
-                shape.style.setProperty('--rotate', rotate + 'deg');
-                
-                bg.appendChild(shape);
-            }
-        }
-
-        // Initialize particles and shapes
-        createParticles();
-        createShapes();
-
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
+        });
+
+        // Stagger animations
+        const experienceCards = document.querySelectorAll('.experience-card');
+        experienceCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.15}s`;
+        });
+
+        const skillCategories = document.querySelectorAll('.skill-category');
+        skillCategories.forEach((cat, index) => {
+            cat.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        const certItems = document.querySelectorAll('.cert-item');
+        certItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.05}s`;
         });
     </script>
 </body>
