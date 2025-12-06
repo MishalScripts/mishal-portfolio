@@ -514,7 +514,7 @@
             box-shadow: 0 15px 50px rgba(229, 9, 20, 0.7);
         }
 
-        /* Experience Section */
+        /* Experience, Skills, Projects, Certifications - Same as before */
         .experience-grid {
             display: grid;
             gap: 35px;
@@ -598,7 +598,6 @@
             font-size: 18px;
         }
 
-        /* Skills Section */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -644,7 +643,6 @@
             font-size: 16px;
         }
 
-        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -748,7 +746,6 @@
             transform: translateY(-2px);
         }
 
-        /* Certifications */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -808,7 +805,6 @@
             opacity: 1;
         }
 
-        /* Contact Section */
         .contact-section {
             text-align: center;
             padding: 120px 60px;
@@ -844,7 +840,6 @@
             box-shadow: 0 15px 50px rgba(229, 9, 20, 0.6);
         }
 
-        /* Footer */
         footer {
             background: var(--netflix-dark);
             text-align: center;
@@ -858,7 +853,6 @@
             font-size: 15px;
         }
 
-        /* Animations */
         @keyframes fadeInLeft {
             to {
                 opacity: 1;
@@ -887,7 +881,6 @@
             }
         }
 
-        /* Responsive - ENHANCED MOBILE */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -954,7 +947,6 @@
                 font-size: 36px;
             }
 
-            /* MOBILE RESUME FIX */
             .resume-section {
                 padding: 30px 20px;
                 margin: 0;
@@ -1054,7 +1046,6 @@
     </style>
 </head>
 <body>
-    <!-- Enhanced Animated Background -->
     <div class="animated-bg">
         <div class="grid-overlay"></div>
         <div class="spotlight" id="spotlight"></div>
@@ -1063,7 +1054,6 @@
         <div class="gradient-orb" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(229,9,20,0.2), transparent); top: 50%; left: 50%; animation-delay: 6s;"></div>
     </div>
 
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">M.MISHAL</div>
@@ -1084,7 +1074,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="hero-content">
             <div class="hero-text">
@@ -1120,7 +1109,6 @@
         </div>
     </section>
 
-    <!-- Resume Section -->
     <section id="resume">
         <h2 class="section-title">Resume</h2>
         <div class="resume-section">
@@ -1138,7 +1126,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience">
         <h2 class="section-title">Professional Experience</h2>
         <div class="experience-grid">
@@ -1188,7 +1175,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
         <h2 class="section-title">Technical Skills & Proficiency</h2>
         <div class="skills-container">
@@ -1211,7 +1197,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
@@ -1260,7 +1245,6 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
     <section id="certifications">
         <h2 class="section-title">Certifications</h2>
         <p style="color: var(--netflix-light-gray); margin-bottom: 40px; font-size: 17px; font-weight: 500;">Click on any certification to view details</p>
@@ -1296,7 +1280,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <h2 class="section-title">Let's Connect</h2>
         <p style="font-size: 19px; color: var(--netflix-light-gray); max-width: 650px; margin: 20px auto; line-height: 1.8; font-weight: 500;">
@@ -1312,20 +1295,17 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Mouse spotlight effect
         const spotlight = document.getElementById('spotlight');
         document.addEventListener('mousemove', (e) => {
             spotlight.style.left = e.clientX - 300 + 'px';
             spotlight.style.top = e.clientY - 300 + 'px';
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1335,7 +1315,6 @@
             }
         });
 
-        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -1349,12 +1328,10 @@
             });
         }, observerOptions);
 
-        // Observe all animated elements
         document.querySelectorAll('.experience-card, .skill-category, .project-card, .cert-item').forEach(el => {
             observer.observe(el);
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1371,7 +1348,6 @@
             });
         });
 
-        // Stagger animations
         const experienceCards = document.querySelectorAll('.experience-card');
         experienceCards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.15}s`;
