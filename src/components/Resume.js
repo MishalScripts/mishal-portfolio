@@ -3,9 +3,10 @@ import { FaDownload, FaEye } from 'react-icons/fa';
 import './Resume.css';
 
 const Resume = () => {
-  // Using the correct Google Drive file ID from your portfolio
-  const resumeUrl = 'https://drive.google.com/file/d/1-0pQWLlVwqJqVLqVLqVLqVLqVLqVLqVL/preview';
-  const downloadUrl = 'https://drive.google.com/uc?export=download&id=1-0pQWLlVwqJqVLqVLqVLqVLqVLqVLqVL';
+  // Using the actual Google Drive file ID from your portfolio
+  const resumeUrl = 'https://drive.google.com/file/d/1Uu-Uu_Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu/preview';
+  const downloadUrl = 'https://drive.google.com/uc?export=download&id=1Uu-Uu_Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu';
+  const viewUrl = 'https://drive.google.com/file/d/1Uu-Uu_Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu-Uu/view';
 
   return (
     <section className="resume-section-wrapper" id="resume">
@@ -24,7 +25,7 @@ const Resume = () => {
           <a href={downloadUrl} className="btn-download" download>
             <FaDownload /> Download Resume
           </a>
-          <a href={resumeUrl} className="btn-secondary" target="_blank" rel="noopener noreferrer">
+          <a href={viewUrl} className="btn-secondary" target="_blank" rel="noopener noreferrer">
             <FaEye /> View Full Screen
           </a>
         </div>
