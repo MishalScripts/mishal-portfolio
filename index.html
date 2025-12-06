@@ -28,7 +28,7 @@
             position: relative;
         }
 
-        /* Enhanced Animated Background */
+        /* Enhanced Animated Background with Moving Elements */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -60,6 +60,54 @@
             }
         }
 
+        /* Moving Particles */
+        .particle {
+            position: absolute;
+            background: var(--netflix-red);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: rise 15s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* Floating Shapes */
+        .floating-shape {
+            position: absolute;
+            border: 2px solid rgba(229, 9, 20, 0.3);
+            animation: float-shape 20s infinite ease-in-out;
+        }
+
+        @keyframes float-shape {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(100px, -100px) rotate(90deg);
+            }
+            50% {
+                transform: translate(200px, 0) rotate(180deg);
+            }
+            75% {
+                transform: translate(100px, 100px) rotate(270deg);
+            }
+        }
+
         .grid-overlay {
             position: absolute;
             top: 0;
@@ -71,6 +119,16 @@
                 linear-gradient(90deg, rgba(229, 9, 20, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             opacity: 0.5;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
         }
 
         .spotlight {
@@ -80,6 +138,26 @@
             background: radial-gradient(circle, rgba(229, 9, 20, 0.15), transparent 70%);
             pointer-events: none;
             transition: all 0.3s ease;
+        }
+
+        /* Waves Animation */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 200px;
+            background: linear-gradient(90deg, transparent, rgba(229, 9, 20, 0.1), transparent);
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* All content above background */
@@ -459,7 +537,7 @@
             border-radius: 3px;
         }
 
-        /* Resume Section - MOBILE OPTIMIZED */
+        /* Resume Section */
         .resume-section {
             background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.6));
             border: 2px solid rgba(229, 9, 20, 0.4);
@@ -514,7 +592,7 @@
             box-shadow: 0 15px 50px rgba(229, 9, 20, 0.7);
         }
 
-        /* Experience, Skills, Projects, Certifications - Same as before */
+        /* Experience, Skills, Projects, Certifications - Same styles as before */
         .experience-grid {
             display: grid;
             gap: 35px;
@@ -805,6 +883,94 @@
             opacity: 1;
         }
 
+        /* Suggestions & Recommendations Section */
+        .suggestions-section {
+            background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.6));
+            border: 2px solid rgba(229, 9, 20, 0.4);
+            border-radius: 20px;
+            padding: 60px;
+            margin-top: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(229, 9, 20, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--netflix-red);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--netflix-black);
+            color: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--netflix-red), #c40812);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 35px rgba(229, 9, 20, 0.5);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(229, 9, 20, 0.7);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
         .contact-section {
             text-align: center;
             padding: 120px 60px;
@@ -947,7 +1113,7 @@
                 font-size: 36px;
             }
 
-            .resume-section {
+            .resume-section, .suggestions-section {
                 padding: 30px 20px;
                 margin: 0;
             }
@@ -1046,12 +1212,19 @@
     </style>
 </head>
 <body>
+    <!-- Enhanced Animated Background with Moving Elements -->
     <div class="animated-bg">
         <div class="grid-overlay"></div>
         <div class="spotlight" id="spotlight"></div>
+        <div class="wave"></div>
         <div class="gradient-orb" style="width: 500px; height: 500px; background: radial-gradient(circle, rgba(229,9,20,0.3), transparent); top: 5%; left: 5%;"></div>
         <div class="gradient-orb" style="width: 600px; height: 600px; background: radial-gradient(circle, rgba(229,9,20,0.25), transparent); bottom: 5%; right: 5%; animation-delay: 3s;"></div>
         <div class="gradient-orb" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(229,9,20,0.2), transparent); top: 50%; left: 50%; animation-delay: 6s;"></div>
+        
+        <!-- Floating Shapes -->
+        <div class="floating-shape" style="width: 100px; height: 100px; border-radius: 20px; top: 20%; left: 10%;"></div>
+        <div class="floating-shape" style="width: 80px; height: 80px; border-radius: 50%; top: 60%; right: 15%; animation-delay: 5s;"></div>
+        <div class="floating-shape" style="width: 120px; height: 120px; border-radius: 30px; bottom: 20%; left: 20%; animation-delay: 10s;"></div>
     </div>
 
     <nav id="navbar">
@@ -1069,6 +1242,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#suggestions">Suggestions</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1280,6 +1454,49 @@
         </div>
     </section>
 
+    <!-- Suggestions & Recommendations Section -->
+    <section id="suggestions">
+        <h2 class="section-title">Suggestions & Recommendations</h2>
+        <div class="suggestions-section">
+            <p style="text-align: center; font-size: 18px; color: var(--netflix-light-gray); margin-bottom: 40px; line-height: 1.7;">
+                Your feedback matters! Share your suggestions, recommendations, or thoughts about my work. I'm always looking to improve and would love to hear from you.
+            </p>
+            <div class="form-container">
+                <form id="suggestionForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="general">General Feedback</option>
+                            <option value="portfolio">Portfolio Design</option>
+                            <option value="projects">Projects</option>
+                            <option value="skills">Skills & Expertise</option>
+                            <option value="collaboration">Collaboration Opportunity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Share your thoughts, suggestions, or recommendations..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">📨 Submit Suggestion</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="contact-section">
         <h2 class="section-title">Let's Connect</h2>
         <p style="font-size: 19px; color: var(--netflix-light-gray); max-width: 650px; margin: 20px auto; line-height: 1.8; font-weight: 500;">
@@ -1300,12 +1517,31 @@
     </footer>
 
     <script>
+        // Create moving particles
+        function createParticles() {
+            const bg = document.querySelector('.animated-bg');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                bg.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Mouse spotlight effect
         const spotlight = document.getElementById('spotlight');
         document.addEventListener('mousemove', (e) => {
             spotlight.style.left = e.clientX - 300 + 'px';
             spotlight.style.top = e.clientY - 300 + 'px';
         });
 
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1315,6 +1551,7 @@
             }
         });
 
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -1332,6 +1569,7 @@
             observer.observe(el);
         });
 
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1348,6 +1586,7 @@
             });
         });
 
+        // Stagger animations
         const experienceCards = document.querySelectorAll('.experience-card');
         experienceCards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.15}s`;
@@ -1366,6 +1605,32 @@
         const certItems = document.querySelectorAll('.cert-item');
         certItems.forEach((item, index) => {
             item.style.animationDelay = `${index * 0.05}s`;
+        });
+
+        // Form submission handler
+        document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                category: document.getElementById('category').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Create mailto link with form data
+            const subject = encodeURIComponent(`Portfolio Suggestion: ${formData.category}`);
+            const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nCategory: ${formData.category}\n\nMessage:\n${formData.message}`);
+            const mailtoLink = `mailto:11b51570mishal@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your suggestion! Your email client will open to send the message.');
+            
+            // Reset form
+            this.reset();
         });
     </script>
 </body>
