@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mishal - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>M.Mishal - Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -13,78 +12,19 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow: hidden;
-        }
-
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-        }
-
-        /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #333;
+            color: #fff;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            animation: slideDown 0.5s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         nav {
@@ -99,7 +39,6 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #667eea;
         }
 
         nav ul {
@@ -109,17 +48,18 @@
         }
 
         nav a {
+            color: #fff;
             text-decoration: none;
-            color: #333;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #667eea;
+            color: #4CAF50;
         }
 
-        /* Hero Section */
         .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -129,84 +69,51 @@
             margin-top: 60px;
         }
 
-        .hero-content {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #667eea;
-            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            color: #666;
-            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .cta-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .btn {
             padding: 0.8rem 2rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
+            display: inline-block;
+            transition: transform 0.3s;
         }
 
         .btn-primary {
-            background: #667eea;
+            background: #4CAF50;
             color: white;
         }
 
         .btn-primary:hover {
-            background: #5568d3;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         .btn-secondary {
-            background: #333;
-            color: white;
+            background: #fff;
+            color: #333;
         }
 
         .btn-secondary:hover {
-            background: #555;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
         }
 
-        /* Sections */
         section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -217,53 +124,14 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #333;
         }
 
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* About Section */
         .about-content {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -271,31 +139,22 @@
         }
 
         .skill-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: #f4f4f4;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
         }
 
         .skill-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .skill-card i {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
         }
 
         .skill-card h3 {
             margin-bottom: 1rem;
-            color: #333;
+            color: #667eea;
         }
 
-        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -303,17 +162,14 @@
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
+            background: #f4f4f4;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
         .project-card img {
@@ -328,7 +184,6 @@
 
         .project-info h3 {
             margin-bottom: 0.5rem;
-            color: #333;
         }
 
         .project-info p {
@@ -344,53 +199,29 @@
         .project-links a {
             color: #667eea;
             text-decoration: none;
-            transition: color 0.3s;
         }
 
-        .project-links a:hover {
-            color: #5568d3;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .contact-form {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
         .form-group {
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
+            display: block;
             margin-bottom: 0.5rem;
-            color: #333;
         }
 
         .form-group input,
         .form-group textarea {
+            width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
-            border-radius: 8px;
+            border-radius: 5px;
             font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
         }
 
         .form-group textarea {
@@ -398,10 +229,8 @@
             min-height: 150px;
         }
 
-        /* Footer */
         footer {
-            background: rgba(51, 51, 51, 0.95);
-            backdrop-filter: blur(10px);
+            background: #333;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -417,15 +246,9 @@
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
+            text-decoration: none;
         }
 
-        .social-links a:hover {
-            color: #667eea;
-            transform: scale(1.2);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -442,11 +265,9 @@
     </style>
 </head>
 <body>
-    <div class="animated-bg" id="animatedBg"></div>
-
     <header>
         <nav>
-            <div class="logo">Mishal</div>
+            <div class="logo">M.Mishal</div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -458,58 +279,49 @@
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm Mishal</h1>
+        <div>
+            <h1>Hi, I'm M.Mishal</h1>
             <p>Full Stack Developer | AI Enthusiast | Problem Solver</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Get in Touch
-                </a>
-                <a href="https://github.com/mishalscripts" target="_blank" class="btn btn-secondary">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="https://github.com/mishalscripts" class="btn btn-secondary">GitHub</a>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <h2 class="section-title fade-in">About Me</h2>
-        <div class="about-content fade-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
             <p>I'm a passionate Full Stack Developer with expertise in modern web technologies. I love creating elegant solutions to complex problems and am constantly learning new technologies to stay at the forefront of web development.</p>
+            <br>
             <p>With a strong foundation in both frontend and backend development, I specialize in building scalable, user-friendly applications that make a difference.</p>
         </div>
     </section>
 
     <section id="skills">
-        <h2 class="section-title fade-in">Skills</h2>
+        <h2 class="section-title">Skills</h2>
         <div class="skills-grid">
-            <div class="skill-card slide-in-left">
-                <i class="fab fa-html5"></i>
+            <div class="skill-card">
                 <h3>Frontend Development</h3>
                 <p>HTML5, CSS3, JavaScript, React, Vue.js</p>
             </div>
-            <div class="skill-card fade-in">
-                <i class="fab fa-node-js"></i>
+            <div class="skill-card">
                 <h3>Backend Development</h3>
                 <p>Node.js, Express, Python, Django</p>
             </div>
-            <div class="skill-card slide-in-right">
-                <i class="fas fa-database"></i>
+            <div class="skill-card">
                 <h3>Database</h3>
                 <p>MongoDB, PostgreSQL, MySQL</p>
             </div>
-            <div class="skill-card slide-in-left">
-                <i class="fab fa-git-alt"></i>
+            <div class="skill-card">
                 <h3>Version Control</h3>
                 <p>Git, GitHub, GitLab</p>
             </div>
-            <div class="skill-card fade-in">
-                <i class="fas fa-cloud"></i>
+            <div class="skill-card">
                 <h3>Cloud & DevOps</h3>
                 <p>AWS, Docker, CI/CD</p>
             </div>
-            <div class="skill-card slide-in-right">
-                <i class="fas fa-mobile-alt"></i>
+            <div class="skill-card">
                 <h3>Mobile Development</h3>
                 <p>React Native, Flutter</p>
             </div>
@@ -517,38 +329,38 @@
     </section>
 
     <section id="projects">
-        <h2 class="section-title fade-in">Projects</h2>
+        <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
-            <div class="project-card fade-in">
-                <img src="https://via.placeholder.com/400x200/667eea/ffffff?text=Project+1" alt="Project 1">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200" alt="Project 1">
                 <div class="project-info">
                     <h3>E-Commerce Platform</h3>
                     <p>A full-stack e-commerce solution with payment integration and admin dashboard.</p>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> Code</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#">View Code</a>
+                        <a href="#">Live Demo</a>
                     </div>
                 </div>
             </div>
-            <div class="project-card fade-in">
-                <img src="https://via.placeholder.com/400x200/764ba2/ffffff?text=Project+2" alt="Project 2">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200" alt="Project 2">
                 <div class="project-info">
                     <h3>Task Management App</h3>
                     <p>A collaborative task management application with real-time updates.</p>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> Code</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#">View Code</a>
+                        <a href="#">Live Demo</a>
                     </div>
                 </div>
             </div>
-            <div class="project-card fade-in">
-                <img src="https://via.placeholder.com/400x200/667eea/ffffff?text=Project+3" alt="Project 3">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x200" alt="Project 3">
                 <div class="project-info">
                     <h3>Weather Dashboard</h3>
                     <p>A beautiful weather dashboard with forecasts and interactive maps.</p>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i> Code</a>
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#">View Code</a>
+                        <a href="#">Live Demo</a>
                     </div>
                 </div>
             </div>
@@ -556,86 +368,41 @@
     </section>
 
     <section id="contact">
-        <h2 class="section-title fade-in">Get in Touch</h2>
-        <div class="contact-content fade-in">
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-            </form>
-        </div>
+        <h2 class="section-title">Get in Touch</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
     </section>
 
     <footer>
         <div class="social-links">
-            <a href="https://github.com/mishalscripts" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/mishalscripts">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
         </div>
-        <p>&copy; 2024 Mishal. All rights reserved.</p>
+        <p>&copy; 2024 M.Mishal. All rights reserved.</p>
     </footer>
 
     <script>
-        // Create floating particles
-        function createParticles() {
-            const bg = document.getElementById('animatedBg');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.width = Math.random() * 5 + 2 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                bg.appendChild(particle);
-            }
-        }
-
-        createParticles();
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with animation classes
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
-            observer.observe(el);
-        });
-
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
