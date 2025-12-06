@@ -4,23 +4,23 @@ import './Certifications.css';
 const Certifications = () => {
   const certifications = [
     {
-      title: 'AWS Certified Solutions Architect',
-      issuer: 'Amazon Web Services',
+      title: '🎓 Artificial Intelligence Certification',
+      issuer: 'Verzeo - 2023',
       link: '#'
     },
     {
-      title: 'Blockchain Developer Certification',
-      issuer: 'Blockchain Council',
+      title: '🐍 Python Programming',
+      issuer: 'Online Certification - 2022',
       link: '#'
     },
     {
-      title: 'React Advanced Patterns',
-      issuer: 'Frontend Masters',
+      title: '🌐 Web Development',
+      issuer: 'Online Certification - 2022',
       link: '#'
     },
     {
-      title: 'Full Stack Web Development',
-      issuer: 'Udemy',
+      title: '📊 Data Science Fundamentals',
+      issuer: 'Online Certification - 2023',
       link: '#'
     }
   ];
