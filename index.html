@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M A Mohammed Mishal - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,120 +12,298 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --netflix-red: #E50914;
+            --netflix-black: #000000;
+            --dark-bg: #0a0a0a;
+            --card-bg: #141414;
+            --text-white: #ffffff;
+            --text-gray: #b3b3b3;
+        }
+
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #141414;
-            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--netflix-black);
+            color: var(--text-white);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--netflix-red);
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--netflix-red);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--netflix-red);
+        }
+
         /* Hero Section */
         .hero {
-            position: relative;
             height: 100vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(20,20,20,1) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23E50914" width="1200" height="600"/><text x="50%" y="50%" font-size="120" fill="white" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black">MISHAL</text></svg>');
-            background-size: cover;
-            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            background: linear-gradient(135deg, var(--netflix-black) 0%, #1a0000 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .hero-content {
+            text-align: center;
             z-index: 2;
             max-width: 900px;
             padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
+            font-size: 5rem;
+            font-weight: 800;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--netflix-red), #ff4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 1s ease-out;
         }
 
-        .hero .tagline {
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .role {
             font-size: 1.8rem;
+            color: var(--text-gray);
             margin-bottom: 30px;
-            color: #E50914;
-            font-weight: 500;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero .summary {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            color: var(--text-gray);
             margin-bottom: 40px;
             line-height: 1.8;
-            color: #e5e5e5;
+            animation: fadeIn 1s ease-out 0.6s both;
         }
 
-        .contact-info {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .contact-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
             margin-bottom: 40px;
+            animation: fadeIn 1s ease-out 0.9s both;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-            color: #ffffff;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #E50914;
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
+        .contact-btn {
+            padding: 12px 25px;
+            background: rgba(229, 9, 20, 0.1);
+            border: 2px solid var(--netflix-red);
+            color: var(--text-white);
             text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            margin: 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
         }
 
-        .cta-button:hover {
-            background-color: #f40612;
+        .contact-btn:hover {
+            background: var(--netflix-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            background: var(--netflix-red);
+            color: var(--text-white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: #ff0a16;
             transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(229, 9, 20, 0.5);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--netflix-red);
+        }
+
+        .cta-btn.secondary:hover {
+            background: var(--netflix-red);
+        }
+
+        /* GitHub Dropdown */
+        .github-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .github-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--card-bg);
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(229, 9, 20, 0.3);
+            z-index: 1;
+            border-radius: 5px;
+            border: 1px solid var(--netflix-red);
+            margin-top: 5px;
+        }
+
+        .github-dropdown-content a {
+            color: var(--text-white);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .github-dropdown-content a:hover {
+            background-color: var(--netflix-red);
+        }
+
+        .github-dropdown:hover .github-dropdown-content {
+            display: block;
         }
 
         /* Section Styling */
         .section {
-            padding: 80px 20px;
-            max-width: 1200px;
+            padding: 100px 50px;
+            max-width: 1400px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #E50914;
-            font-weight: 700;
-            border-left: 5px solid #E50914;
-            padding-left: 20px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            color: var(--text-white);
         }
 
-        /* Experience Cards */
-        .experience-grid, .project-grid {
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--netflix-red);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         .card {
-            background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
-            border-radius: 8px;
+            background: var(--card-bg);
+            border-radius: 10px;
             padding: 30px;
-            transition: all 0.3s ease;
-            border: 1px solid #333;
+            border: 1px solid #222;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
@@ -137,177 +315,312 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #E50914, #831010);
+            background: linear-gradient(90deg, var(--netflix-red), #ff4444);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
-            border-color: #E50914;
+            border-color: var(--netflix-red);
+            box-shadow: 0 20px 40px rgba(229, 9, 20, 0.3);
         }
 
         .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 10px;
-            color: #ffffff;
+            color: var(--netflix-red);
         }
 
         .card .meta {
-            color: #E50914;
+            color: var(--text-gray);
             font-size: 0.95rem;
-            margin-bottom: 15px;
-            font-weight: 500;
+            margin-bottom: 20px;
         }
 
         .card ul {
             list-style: none;
-            padding-left: 0;
         }
 
         .card ul li {
-            padding-left: 20px;
-            margin-bottom: 10px;
+            padding-left: 25px;
+            margin-bottom: 12px;
             position: relative;
-            color: #b3b3b3;
+            color: var(--text-gray);
         }
 
         .card ul li::before {
             content: '▸';
             position: absolute;
             left: 0;
-            color: #E50914;
-            font-weight: bold;
+            color: var(--netflix-red);
+            font-size: 1.2rem;
         }
 
-        /* Skills Section */
-        .skills-container {
+        /* Skills */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 50px;
         }
 
-        .skill-category {
-            background: #1f1f1f;
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #E50914;
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--netflix-red);
+            transition: all 0.4s ease;
         }
 
-        .skill-category h3 {
-            color: #E50914;
+        .skill-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--netflix-red);
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            font-size: 1.3rem;
         }
 
-        .skill-category p {
-            color: #b3b3b3;
+        .skill-card p {
+            color: var(--text-gray);
             line-height: 1.8;
         }
 
-        /* Education & Certifications */
-        .education-item, .cert-item {
-            background: #1f1f1f;
-            padding: 20px;
+        /* Resume Section */
+        .resume-container {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--netflix-red);
+            margin-top: 50px;
+        }
+
+        .resume-container h3 {
+            font-size: 2rem;
             margin-bottom: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #E50914;
+            color: var(--netflix-red);
         }
 
-        .education-item h3, .cert-item h3 {
-            color: #ffffff;
-            margin-bottom: 8px;
+        .resume-container p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
         }
 
-        .education-item p, .cert-item p {
-            color: #b3b3b3;
+        .resume-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Recommendation Form */
+        .recommendation-form {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 50px auto;
+            border: 1px solid #222;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--netflix-red);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--netflix-red);
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--netflix-red);
+            color: var(--text-white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #ff0a16;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
         }
 
         /* Footer */
         footer {
-            background: #000000;
+            background: var(--netflix-black);
             padding: 40px 20px;
             text-align: center;
-            border-top: 3px solid #E50914;
+            border-top: 3px solid var(--netflix-red);
         }
 
         footer p {
-            color: #808080;
+            color: var(--text-gray);
+            margin: 10px 0;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--netflix-red);
+            transition: all 0.3s;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            nav {
+                padding: 15px 20px;
             }
 
-            .hero .tagline {
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .role {
                 font-size: 1.3rem;
             }
 
-            .hero .summary {
-                font-size: 1rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 15px;
+            .section {
+                padding: 60px 20px;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            .experience-grid, .project-grid {
+            .cards-grid {
                 grid-template-columns: 1fr;
             }
-        }
 
-        /* Scroll Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .recommendation-form {
+                padding: 30px 20px;
             }
         }
 
-        .card, .skill-category, .education-item, .cert-item {
-            animation: fadeInUp 0.6s ease-out;
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MISHAL</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
             <h1>M A MOHAMMED MISHAL</h1>
-            <p class="tagline">Information Science Engineer | AI Enthusiast | Game QA Tester</p>
+            <p class="role">Information Science Engineer | AI Enthusiast | Game QA Tester</p>
             <p class="summary">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation. Dedicated to building a career that merges technical expertise with real-world impact.</p>
             
-            <div class="contact-info">
-                <div class="contact-item">📞 +91 8660455157</div>
-                <div class="contact-item">✉️ 11b51570mishal@gmail.com</div>
-                <div class="contact-item">📍 Bangalore, Karnataka</div>
+            <div class="contact-links">
+                <a href="tel:+918660455157" class="contact-btn">📞 +91 8660455157</a>
+                <a href="mailto:11b51570mishal@gmail.com" class="contact-btn">✉️ Email Me</a>
+                <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="contact-btn">💼 LinkedIn</a>
             </div>
 
-            <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="cta-button">View LinkedIn Profile</a>
+            <div class="cta-buttons">
+                <div class="github-dropdown">
+                    <button class="cta-btn">🔗 GitHub Profiles</button>
+                    <div class="github-dropdown-content">
+                        <a href="https://github.com/mishalscripts" target="_blank">📂 mishalscripts</a>
+                        <a href="https://github.com/M-A-Mohammed-Mishal" target="_blank">📂 M-A-Mohammed-Mishal</a>
+                    </div>
+                </div>
+                <a href="#resume" class="cta-btn secondary">📄 View Resume</a>
+            </div>
         </div>
     </section>
 
     <!-- Professional Experience -->
-    <section class="section">
+    <section id="experience" class="section">
         <h2 class="section-title">Professional Experience</h2>
-        <div class="experience-grid">
+        <div class="cards-grid">
             <div class="card">
                 <h3>Game QA Tester</h3>
                 <p class="meta">Indium Software | November 2025 – Present</p>
                 <ul>
                     <li>Tested PC game builds for functionality, stability, visual issues, and overall gameplay quality</li>
-                    <li>Logged detailed bug reports in Jira with clear steps, video evidence, and reproducible scenarios to support the development team</li>
-                    <li>Tools Used: Jira, TestRail, Slack</li>
+                    <li>Logged detailed bug reports in Jira with clear steps, video evidence, and reproducible scenarios</li>
+                    <li>Tools: Jira, TestRail, Slack</li>
                 </ul>
             </div>
 
@@ -333,37 +646,53 @@
     </section>
 
     <!-- Technical Skills -->
-    <section class="section">
+    <section id="skills" class="section">
         <h2 class="section-title">Technical Skills & Proficiency</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>Cybersecurity</h3>
-                <p>Experienced in conducting risk assessments and implementing security protocols to safeguard data. Skilled in analyzing cyber threats.</p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🔒 Cybersecurity</h3>
+                <p>Experienced in conducting risk assessments and implementing security protocols to safeguard data. Skilled in analyzing cyber threats and vulnerability assessment.</p>
             </div>
 
-            <div class="skill-category">
-                <h3>Programming</h3>
-                <p><strong>Java, Python:</strong> Good in writing clean and efficient code for various applications.</p>
+            <div class="skill-card">
+                <h3>💻 Programming</h3>
+                <p><strong>Java, Python:</strong> Proficient in writing clean and efficient code for various applications. Strong foundation in object-oriented programming and algorithm design.</p>
             </div>
 
-            <div class="skill-category">
-                <h3>Web Development</h3>
-                <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Proficient in creating responsive web designs and managing relational databases.</p>
+            <div class="skill-card">
+                <h3>🌐 Web Development</h3>
+                <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Expert in creating responsive web designs and managing relational databases. Experience with modern web frameworks.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>🧪 Quality Assurance</h3>
+                <p><strong>Jira, TestRail, Slack:</strong> Experienced in game testing, bug tracking, and quality assurance processes. Skilled in creating detailed test cases and reports.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>🤖 AI & Machine Learning</h3>
+                <p><strong>OpenCV, Deep Learning, XGBoost:</strong> Hands-on experience with image processing, neural networks, and machine learning model deployment.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>🛠️ Tools & Technologies</h3>
+                <p><strong>Git, VS Code, PyCharm:</strong> Proficient with version control systems and modern development environments for efficient workflow.</p>
             </div>
         </div>
     </section>
 
     <!-- Projects -->
-    <section class="section">
+    <section id="projects" class="section">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="project-grid">
+        <div class="cards-grid">
             <div class="card">
-                <h3>Stress Detection Using Image Processing & Deep Learning</h3>
+                <h3>Stress Detection System</h3>
                 <p class="meta">Research Project | Published at IC3C-2025</p>
                 <ul>
-                    <li>Designed a stress-level detection system using Python, OpenCV, DNN, LBP, XGBoost, and FACS</li>
-                    <li>Focused on analyzing facial cues for accurate classification</li>
-                    <li>Research work officially selected for presentation at IC3C-2025</li>
+                    <li>Designed stress-level detection using Python, OpenCV, DNN, LBP, XGBoost, and FACS</li>
+                    <li>Analyzed facial cues for accurate stress classification</li>
+                    <li>Research officially selected for presentation at IC3C-2025 conference</li>
+                    <li>Achieved high accuracy in real-time stress detection</li>
                 </ul>
             </div>
 
@@ -371,56 +700,181 @@
                 <h3>QR Code Safety Detection System</h3>
                 <p class="meta">Security Application</p>
                 <ul>
-                    <li>Developed a security-based application capable of analyzing and detecting unsafe or malicious QR codes</li>
-                    <li>Verifies the authenticity of QR codes and identifies potential threats such as phishing or malware links</li>
-                    <li>Enhances user safety through real-time detection</li>
+                    <li>Developed security application for analyzing unsafe or malicious QR codes</li>
+                    <li>Verifies QR code authenticity and identifies phishing/malware threats</li>
+                    <li>Real-time detection and user safety enhancement</li>
+                    <li>Implemented advanced pattern recognition algorithms</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Education -->
-    <section class="section">
-        <h2 class="section-title">Educational Qualification</h2>
-        <div class="education-item">
-            <h3>Bachelor of Engineering - Information Science Engineering</h3>
-            <p><strong>B.M.S. Institute of Technology</strong> | 2022 - 2026</p>
+    <!-- Resume Section -->
+    <section id="resume" class="section">
+        <h2 class="section-title">Resume</h2>
+        <div class="resume-container">
+            <h3>📄 Download My Resume</h3>
+            <p>Get a comprehensive overview of my skills, experience, and achievements</p>
+            <div class="resume-buttons">
+                <a href="#" class="cta-btn" onclick="alert('Please upload your resume PDF to your GitHub repository and update this link!')">📥 Download PDF</a>
+                <a href="#" class="cta-btn secondary" onclick="alert('Please upload your resume and update this link!')">👁️ View Online</a>
+            </div>
         </div>
 
-        <div class="education-item">
-            <h3>Higher Secondary School - P.C.M.CS</h3>
-            <p><strong>International Indian School, Riyadh, Saudi Arabia</strong> | 2022</p>
+        <!-- Education -->
+        <div style="margin-top: 60px;">
+            <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🎓 Education</h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Bachelor of Engineering</h3>
+                    <p class="meta">Information Science Engineering | 2022 - 2026</p>
+                    <p style="color: var(--text-gray);">B.M.S. Institute of Technology, Bangalore</p>
+                </div>
+
+                <div class="card">
+                    <h3>Higher Secondary School</h3>
+                    <p class="meta">P.C.M.CS | 2022</p>
+                    <p style="color: var(--text-gray);">International Indian School, Riyadh, Saudi Arabia</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications -->
+        <div style="margin-top: 60px;">
+            <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🏆 Certifications</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>IIT Kharagpur - NPTEL</h3>
+                    <p>✓ E-Business Certification<br>✓ Ethical Hacking Certification</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Infosys Springboard</h3>
+                    <p>✓ Software Engineering Fundamentals<br>✓ Advanced Features in Java</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Simplilearn</h3>
+                    <p>✓ Ethical Hacking 101</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Forage - PwC Switzerland</h3>
+                    <p>✓ Cybersecurity Job Simulation</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Forage - Accenture</h3>
+                    <p>✓ Data Analytics and Visualization Job Simulation</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Certifications -->
-    <section class="section">
-        <h2 class="section-title">Certifications</h2>
-        <div class="cert-item">
-            <h3>IIT Kharagpur - NPTEL</h3>
-            <p>E-Business Certification | Ethical Hacking Certification</p>
-        </div>
+    <!-- Recommendations Section -->
+    <section id="recommendations" class="section">
+        <h2 class="section-title">Recommendations & Suggestions</h2>
+        <div class="recommendation-form">
+            <h3 style="color: var(--netflix-red); margin-bottom: 20px; text-align: center;">Share Your Feedback</h3>
+            <p style="color: var(--text-gray); text-align: center; margin-bottom: 30px;">I'd love to hear your thoughts, suggestions, or recommendations!</p>
+            
+            <form id="recommendationForm">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
 
-        <div class="cert-item">
-            <h3>Infosys Springboard</h3>
-            <p>Software Engineering Fundamentals - Developing and Testing | Advanced Features in Java</p>
-        </div>
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
 
-        <div class="cert-item">
-            <h3>Simplilearn</h3>
-            <p>Ethical Hacking 101</p>
-        </div>
+                <div class="form-group">
+                    <label for="company">Company/Organization (Optional)</label>
+                    <input type="text" id="company" name="company" placeholder="Your company or organization">
+                </div>
 
-        <div class="cert-item">
-            <h3>Forage</h3>
-            <p>PwC Switzerland Cybersecurity Job Simulation | Accenture North America Data Analytics and Visualization Job Simulation</p>
+                <div class="form-group">
+                    <label for="message">Your Recommendation/Suggestion *</label>
+                    <textarea id="message" name="message" required placeholder="Share your thoughts, feedback, or recommendations..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Recommendation</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                ✅ Thank you for your recommendation! Your feedback has been received.
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 M A Mohammed Mishal. All rights reserved.</p>
-        <p>Designed with Netflix-inspired aesthetics</p>
+        <p style="font-size: 1.2rem; font-weight: 600; color: var(--netflix-red); margin-bottom: 15px;">M A MOHAMMED MISHAL</p>
+        <p>Information Science Engineer | AI Enthusiast | Game QA Tester</p>
+        <p>📍 Bangalore, Karnataka | 📞 +91 8660455157 | ✉️ 11b51570mishal@gmail.com</p>
+        <p style="margin-top: 20px; color: #666;">&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form Submission
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in localStorage (you can replace this with actual backend API)
+            let recommendations = JSON.parse(localStorage.getItem('recommendations') || '[]');
+            recommendations.push(formData);
+            localStorage.setItem('recommendations', JSON.stringify(recommendations));
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
