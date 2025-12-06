@@ -1,0 +1,324 @@
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-text {
+  opacity: 0;
+  animation: fadeInLeft 1s ease forwards;
+}
+
+.hero-text h1 {
+  font-size: 64px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.hero-text .name-highlight {
+  background: linear-gradient(135deg, var(--netflix-red), #ff4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-text .subtitle {
+  font-size: 22px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.current-role {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.1));
+  border: 2px solid var(--netflix-red);
+  padding: 14px 28px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
+  transition: all 0.3s ease;
+}
+
+.current-role:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(229, 9, 20, 0.5);
+}
+
+.hero-text .summary {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 18px 45px;
+  background: linear-gradient(135deg, var(--netflix-red), #c40812);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(229, 9, 20, 0.6);
+}
+
+.btn-secondary {
+  padding: 18px 45px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--netflix-red);
+  transform: translateY(-3px);
+}
+
+.github-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.github-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  background: rgba(20, 20, 20, 0.98);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(229, 9, 20, 0.4);
+  border-radius: 8px;
+  min-width: 250px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  z-index: 100;
+}
+
+[data-theme="light"] .github-menu {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.github-dropdown:hover .github-menu {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.github-menu a {
+  display: block;
+  padding: 15px 25px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.github-menu a:last-child {
+  border-bottom: none;
+}
+
+.github-menu a:hover {
+  background: rgba(229, 9, 20, 0.3);
+  color: var(--netflix-red);
+  padding-left: 35px;
+}
+
+.hero-image {
+  opacity: 0;
+  animation: fadeInRight 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.profile-card {
+  background: linear-gradient(145deg, rgba(229, 9, 20, 0.15), rgba(20, 20, 20, 0.9));
+  border: 2px solid rgba(229, 9, 20, 0.4);
+  border-radius: 20px;
+  padding: 45px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .profile-card {
+  background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(255, 255, 255, 0.9));
+}
+
+.profile-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 80px rgba(229, 9, 20, 0.3);
+}
+
+.profile-img-container {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto 35px;
+  border-radius: 50%;
+  border: 5px solid var(--netflix-red);
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(229, 9, 20, 0.6);
+  position: relative;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover .profile-img {
+  transform: scale(1.05);
+}
+
+.contact-info {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 2.4;
+  font-weight: 500;
+}
+
+.contact-info a {
+  color: var(--netflix-red);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #ff4444;
+  text-decoration: underline;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .hero-text h1 {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero-content {
+    padding: 0 25px;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
+  .hero-text .subtitle {
+    font-size: 18px;
+  }
+
+  .current-role {
+    font-size: 13px;
+    padding: 12px 20px;
+  }
+
+  .hero-text .summary {
+    font-size: 15px;
+  }
+
+  .profile-img-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .profile-card {
+    padding: 30px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

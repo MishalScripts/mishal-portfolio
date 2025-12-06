@@ -1,0 +1,43 @@
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: 120px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 52px;
+  font-weight: 900;
+  margin-bottom: 60px;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  letter-spacing: -2px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--netflix-red), transparent);
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 80px 25px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+}
