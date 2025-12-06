@@ -27,10 +27,114 @@
             color: var(--text-white);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(229, 9, 20, 0.1) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        .bg-circle:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 9s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(50px, -50px) scale(1.1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-30px, 30px) scale(0.9);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(30px, 50px) scale(1.05);
+                opacity: 0.6;
+            }
+        }
+
+        /* Particle Effect */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--netflix-red);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
@@ -47,6 +151,12 @@
             align-items: center;
             border-bottom: 2px solid var(--netflix-red);
             box-shadow: 0 2px 20px rgba(229, 9, 20, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 10px 50px;
+            box-shadow: 0 5px 30px rgba(229, 9, 20, 0.5);
         }
 
         nav .logo {
@@ -54,6 +164,11 @@
             font-weight: 800;
             color: var(--netflix-red);
             letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        nav .logo:hover {
+            transform: scale(1.1);
         }
 
         nav .nav-links {
@@ -70,11 +185,27 @@
             transition: all 0.3s;
             padding: 8px 15px;
             border-radius: 5px;
+            position: relative;
+        }
+
+        nav .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--netflix-red);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav .nav-links li a:hover::after {
+            width: 80%;
         }
 
         nav .nav-links li a:hover {
             color: var(--netflix-red);
-            background: rgba(229, 9, 20, 0.1);
         }
 
         .mobile-menu-btn {
@@ -219,11 +350,11 @@
         @keyframes fadeInScale {
             from {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.8) rotate(-5deg);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1) rotate(0deg);
             }
         }
 
@@ -235,7 +366,7 @@
             border-radius: 15px;
             border: 4px solid var(--netflix-red);
             box-shadow: 0 20px 60px rgba(229, 9, 20, 0.4);
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
         }
 
         .profile-img:hover {
@@ -292,7 +423,7 @@
 
         .cta-btn:hover {
             background: #ff0a16;
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-2px);
             box-shadow: 0 10px 40px rgba(229, 9, 20, 0.5);
         }
 
@@ -337,6 +468,18 @@
 
         .github-dropdown:hover .github-dropdown-content {
             display: block;
+            animation: dropdownSlide 0.3s ease-out;
+        }
+
+        @keyframes dropdownSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Section Styling */
@@ -345,8 +488,8 @@
             max-width: 1400px;
             margin: 0 auto;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(80px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
         .section.visible {
@@ -369,15 +512,14 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 0;
             height: 4px;
             background: var(--netflix-red);
-            animation: expandWidth 0.8s ease-out;
+            transition: width 0.8s ease-out 0.3s;
         }
 
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 100px; }
+        .section.visible .section-title::after {
+            width: 100px;
         }
 
         /* Resume Preview */
@@ -388,6 +530,12 @@
             border: 2px solid var(--netflix-red);
             margin-top: 50px;
             box-shadow: 0 10px 40px rgba(229, 9, 20, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .resume-preview-container:hover {
+            box-shadow: 0 20px 60px rgba(229, 9, 20, 0.4);
+            transform: translateY(-5px);
         }
 
         .resume-preview-container h3 {
@@ -403,6 +551,7 @@
             border: 2px solid #333;
             border-radius: 10px;
             background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
         .resume-buttons {
@@ -411,6 +560,26 @@
             gap: 20px;
             flex-wrap: wrap;
             margin-top: 30px;
+        }
+
+        .resume-placeholder {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 60px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px dashed var(--netflix-red);
+        }
+
+        .resume-placeholder h4 {
+            color: var(--netflix-red);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .resume-placeholder p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
         }
 
         /* Cards Grid */
@@ -426,9 +595,16 @@
             border-radius: 10px;
             padding: 30px;
             border: 1px solid #222;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .section.visible .card {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card::before {
@@ -440,7 +616,7 @@
             height: 4px;
             background: linear-gradient(90deg, var(--netflix-red), #ff4444);
             transform: scaleX(0);
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
         .card:hover::before {
@@ -448,9 +624,9 @@
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-15px) scale(1.02);
             border-color: var(--netflix-red);
-            box-shadow: 0 20px 40px rgba(229, 9, 20, 0.3);
+            box-shadow: 0 25px 50px rgba(229, 9, 20, 0.4);
         }
 
         .card h3 {
@@ -497,12 +673,19 @@
             padding: 30px;
             border-radius: 10px;
             border-left: 5px solid var(--netflix-red);
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .section.visible .skill-card {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .skill-card:hover {
-            transform: translateX(10px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+            transform: translateX(15px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
         }
 
         .skill-card h3 {
@@ -524,6 +707,11 @@
             max-width: 800px;
             margin: 50px auto;
             border: 1px solid #222;
+            transition: all 0.5s ease;
+        }
+
+        .recommendation-form:hover {
+            box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
         }
 
         .form-group {
@@ -555,7 +743,8 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--netflix-red);
-            box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+            transform: scale(1.02);
         }
 
         .form-group textarea {
@@ -578,8 +767,8 @@
 
         .submit-btn:hover {
             background: #ff0a16;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.5);
         }
 
         .success-message {
@@ -591,42 +780,7 @@
             border-radius: 5px;
             margin-top: 20px;
             text-align: center;
-        }
-
-        /* Recommendations Display */
-        .recommendations-display {
-            margin-top: 60px;
-        }
-
-        .recommendation-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            border-left: 4px solid var(--netflix-red);
-            margin-bottom: 20px;
-            transition: all 0.3s;
-        }
-
-        .recommendation-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
-        }
-
-        .recommendation-card .author {
-            font-weight: 600;
-            color: var(--netflix-red);
-            margin-bottom: 5px;
-        }
-
-        .recommendation-card .position {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .recommendation-card .message {
-            color: var(--text-gray);
-            line-height: 1.8;
+            animation: slideDown 0.5s ease-out;
         }
 
         /* Footer */
@@ -640,6 +794,15 @@
         footer p {
             color: var(--text-gray);
             margin: 10px 0;
+        }
+
+        footer a {
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            transform: scale(1.1);
+            display: inline-block;
         }
 
         /* Responsive */
@@ -722,363 +885,357 @@
                 height: 600px;
             }
         }
+
+        /* Stagger animation for cards */
+        .section.visible .card:nth-child(1) { transition-delay: 0.1s; }
+        .section.visible .card:nth-child(2) { transition-delay: 0.2s; }
+        .section.visible .card:nth-child(3) { transition-delay: 0.3s; }
+        .section.visible .card:nth-child(4) { transition-delay: 0.4s; }
+        .section.visible .card:nth-child(5) { transition-delay: 0.5s; }
+        .section.visible .card:nth-child(6) { transition-delay: 0.6s; }
+
+        .section.visible .skill-card:nth-child(1) { transition-delay: 0.1s; }
+        .section.visible .skill-card:nth-child(2) { transition-delay: 0.2s; }
+        .section.visible .skill-card:nth-child(3) { transition-delay: 0.3s; }
+        .section.visible .skill-card:nth-child(4) { transition-delay: 0.4s; }
+        .section.visible .skill-card:nth-child(5) { transition-delay: 0.5s; }
+        .section.visible .skill-card:nth-child(6) { transition-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">MISHAL</div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#recommendations">Recommendations</a></li>
-        </ul>
-        <div class="mobile-menu-btn" id="mobileMenuBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <span class="current-role">🎮 Currently: Game QA Tester at Indium Software</span>
-                <h1>M A MOHAMMED<br>MISHAL</h1>
-                <p class="role">Information Science Engineer | AI Enthusiast | Cybersecurity Specialist</p>
-                <p class="summary">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation. Dedicated to building a career that merges technical expertise with real-world impact.</p>
-                
-                <div class="contact-links">
-                    <a href="tel:+918660455157" class="contact-btn">📞 +91 8660455157</a>
-                    <a href="mailto:11b51570mishal@gmail.com" class="contact-btn">✉️ Email Me</a>
-                    <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="contact-btn">💼 LinkedIn</a>
-                </div>
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav id="navbar">
+            <div class="logo">MISHAL</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#recommendations">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
 
-                <div class="cta-buttons">
-                    <div class="github-dropdown">
-                        <button class="cta-btn">🔗 GitHub Profiles</button>
-                        <div class="github-dropdown-content">
-                            <a href="https://github.com/mishalscripts" target="_blank">📂 mishalscripts</a>
-                            <a href="https://github.com/M-A-Mohammed-Mishal" target="_blank">📂 M-A-Mohammed-Mishal</a>
-                        </div>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="current-role">🎮 Currently: Game QA Tester at Indium Software</span>
+                    <h1>M A MOHAMMED<br>MISHAL</h1>
+                    <p class="role">Information Science Engineer | AI Enthusiast | Cybersecurity Specialist</p>
+                    <p class="summary">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation. Dedicated to building a career that merges technical expertise with real-world impact.</p>
+                    
+                    <div class="contact-links">
+                        <a href="tel:+918660455157" class="contact-btn">📞 +91 8660455157</a>
+                        <a href="mailto:11b51570mishal@gmail.com" class="contact-btn">✉️ Email Me</a>
+                        <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="contact-btn">💼 LinkedIn</a>
                     </div>
-                    <a href="#resume" class="cta-btn secondary">📄 View Resume</a>
+
+                    <div class="cta-buttons">
+                        <div class="github-dropdown">
+                            <button class="cta-btn">🔗 GitHub Profiles</button>
+                            <div class="github-dropdown-content">
+                                <a href="https://github.com/mishalscripts" target="_blank">📂 mishalscripts</a>
+                                <a href="https://github.com/M-A-Mohammed-Mishal" target="_blank">📂 M-A-Mohammed-Mishal</a>
+                            </div>
+                        </div>
+                        <a href="#resume" class="cta-btn secondary">📄 View Resume</a>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/1278d860-2d54-4e85-8744-f8f7f78be713/2025-12-06T14-05-45-028Z-5e88f96c-chat-image-1765029944997-0.jpg" alt="M A Mohammed Mishal" class="profile-img">
                 </div>
             </div>
+        </section>
 
-            <div class="hero-image">
-                <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/1278d860-2d54-4e85-8744-f8f7f78be713/2025-12-06T14-05-45-028Z-5e88f96c-chat-image-1765029944997-0.jpg" alt="M A Mohammed Mishal" class="profile-img">
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section">
-        <h2 class="section-title">📄 Resume</h2>
-        
-        <div class="resume-preview-container">
-            <h3>Resume Preview</h3>
-            <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">View my complete professional resume below</p>
+        <!-- Resume Section -->
+        <section id="resume" class="section">
+            <h2 class="section-title">📄 Resume</h2>
             
-            <!-- Resume Preview - Replace with your actual resume URL -->
-            <div style="background: white; padding: 40px; border-radius: 10px;">
-                <div style="text-align: center; color: #333; margin-bottom: 30px;">
-                    <h2 style="color: var(--netflix-red); font-size: 2.5rem; margin-bottom: 10px;">M A MOHAMMED MISHAL</h2>
-                    <p style="color: #666; font-size: 1.1rem;">Game QA Tester | Information Science Engineer</p>
-                    <p style="color: #666;">📞 +91 8660455157 | ✉️ 11b51570mishal@gmail.com | 📍 Bangalore, Karnataka</p>
-                </div>
+            <div class="resume-preview-container">
+                <h3>Resume Preview</h3>
+                <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">View and download my complete professional resume</p>
                 
-                <div style="color: #333; line-height: 1.8;">
-                    <h3 style="color: var(--netflix-red); border-bottom: 2px solid var(--netflix-red); padding-bottom: 10px; margin: 30px 0 20px;">Professional Summary</h3>
-                    <p style="color: #555;">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation.</p>
-                    
-                    <h3 style="color: var(--netflix-red); border-bottom: 2px solid var(--netflix-red); padding-bottom: 10px; margin: 30px 0 20px;">Education</h3>
-                    <p style="color: #555;"><strong>Bachelor of Engineering - Information Science</strong><br>B.M.S. Institute of Technology | 2022 - 2026</p>
-                    
-                    <h3 style="color: var(--netflix-red); border-bottom: 2px solid var(--netflix-red); padding-bottom: 10px; margin: 30px 0 20px;">Technical Skills</h3>
-                    <p style="color: #555;"><strong>Programming:</strong> Java, Python<br>
-                    <strong>Web Development:</strong> HTML, CSS, JavaScript, MySQL<br>
-                    <strong>Cybersecurity:</strong> Risk Assessment, Security Protocols<br>
-                    <strong>Tools:</strong> Jira, TestRail, Slack, Git, OpenCV</p>
+                <!-- PDF Viewer - Replace the src with your actual resume PDF URL -->
+                <div class="resume-placeholder">
+                    <h4>📄 Upload Your Resume PDF</h4>
+                    <p>To display your resume here, please follow these steps:</p>
+                    <ol style="text-align: left; max-width: 600px; margin: 0 auto 30px; color: var(--text-gray);">
+                        <li style="margin-bottom: 10px;">Upload your resume PDF to your GitHub repository (mishalscripts/mishal-portfolio)</li>
+                        <li style="margin-bottom: 10px;">Name it <code style="background: #000; padding: 2px 8px; border-radius: 3px; color: var(--netflix-red);">resume.pdf</code></li>
+                        <li style="margin-bottom: 10px;">The PDF will automatically display here</li>
+                    </ol>
+                    <p style="font-size: 0.9rem; color: #666;">Once uploaded, your resume will be viewable and downloadable by visitors</p>
+                </div>
+
+                <!-- Uncomment this when you upload your resume.pdf -->
+                <!-- <iframe 
+                    src="https://mishalscripts.github.io/mishal-portfolio/resume.pdf" 
+                    class="resume-iframe"
+                    title="Resume PDF">
+                </iframe> -->
+                
+                <div class="resume-buttons">
+                    <a href="https://mishalscripts.github.io/mishal-portfolio/resume.pdf" target="_blank" class="cta-btn" download>📥 Download PDF</a>
+                    <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="cta-btn secondary">👁️ View on LinkedIn</a>
                 </div>
             </div>
-            
-            <div class="resume-buttons">
-                <a href="#" class="cta-btn" onclick="alert('Please upload your resume PDF to GitHub and update this link with: https://github.com/mishalscripts/mishal-portfolio/raw/main/resume.pdf')">📥 Download PDF</a>
-                <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="cta-btn secondary">👁️ View on LinkedIn</a>
-            </div>
-        </div>
 
-        <!-- Education -->
-        <div style="margin-top: 80px;">
-            <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🎓 Education</h3>
+            <!-- Education -->
+            <div style="margin-top: 80px;">
+                <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🎓 Education</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Bachelor of Engineering</h3>
+                        <p class="meta">Information Science Engineering | 2022 - 2026</p>
+                        <p style="color: var(--text-gray);">B.M.S. Institute of Technology, Bangalore</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Higher Secondary School</h3>
+                        <p class="meta">P.C.M.CS | 2022</p>
+                        <p style="color: var(--text-gray);">International Indian School, Riyadh, Saudi Arabia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div style="margin-top: 60px;">
+                <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🏆 Certifications</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>IIT Kharagpur - NPTEL</h3>
+                        <p>✓ E-Business Certification<br>✓ Ethical Hacking Certification</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Infosys Springboard</h3>
+                        <p>✓ Software Engineering Fundamentals<br>✓ Advanced Features in Java</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Simplilearn</h3>
+                        <p>✓ Ethical Hacking 101</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Forage - PwC Switzerland</h3>
+                        <p>✓ Cybersecurity Job Simulation</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Forage - Accenture</h3>
+                        <p>✓ Data Analytics and Visualization Job Simulation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Professional Experience</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <h3>Bachelor of Engineering</h3>
-                    <p class="meta">Information Science Engineering | 2022 - 2026</p>
-                    <p style="color: var(--text-gray);">B.M.S. Institute of Technology, Bangalore</p>
+                    <h3>Game QA Tester</h3>
+                    <p class="meta">Indium Software | November 2025 – Present</p>
+                    <ul>
+                        <li>Tested PC game builds for functionality, stability, visual issues, and overall gameplay quality</li>
+                        <li>Logged detailed bug reports in Jira with clear steps, video evidence, and reproducible scenarios</li>
+                        <li>Collaborated with development teams to ensure high-quality game releases</li>
+                        <li>Tools: Jira, TestRail, Slack</li>
+                    </ul>
                 </div>
 
                 <div class="card">
-                    <h3>Higher Secondary School</h3>
-                    <p class="meta">P.C.M.CS | 2022</p>
-                    <p style="color: var(--text-gray);">International Indian School, Riyadh, Saudi Arabia</p>
+                    <h3>Artificial Intelligence Intern</h3>
+                    <p class="meta">CodSoft | September 2024 – October 2024</p>
+                    <ul>
+                        <li>Independently developed AI-based solutions to enhance workflow efficiency</li>
+                        <li>Focused on training and deploying machine learning models</li>
+                        <li>Implemented deep learning algorithms for real-world applications</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Web Development Intern</h3>
+                    <p class="meta">SkillCraft Technology | September 2024 – October 2024</p>
+                    <ul>
+                        <li>Designed and optimized user interfaces for web applications</li>
+                        <li>Worked on front-end development using HTML, CSS, JavaScript</li>
+                        <li>Received a Letter of Recommendation for reliable performance</li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Certifications -->
-        <div style="margin-top: 60px;">
-            <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🏆 Certifications</h3>
+        <!-- Technical Skills -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical Skills & Proficiency</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>IIT Kharagpur - NPTEL</h3>
-                    <p>✓ E-Business Certification<br>✓ Ethical Hacking Certification</p>
+                    <h3>🔒 Cybersecurity</h3>
+                    <p>Experienced in conducting risk assessments and implementing security protocols to safeguard data. Skilled in analyzing cyber threats, vulnerability assessment, and ethical hacking.</p>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Infosys Springboard</h3>
-                    <p>✓ Software Engineering Fundamentals<br>✓ Advanced Features in Java</p>
+                    <h3>💻 Programming</h3>
+                    <p><strong>Java, Python:</strong> Proficient in writing clean and efficient code for various applications. Strong foundation in object-oriented programming and algorithm design.</p>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Simplilearn</h3>
-                    <p>✓ Ethical Hacking 101</p>
+                    <h3>🌐 Web Development</h3>
+                    <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Expert in creating responsive web designs and managing relational databases. Experience with modern web frameworks.</p>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Forage - PwC Switzerland</h3>
-                    <p>✓ Cybersecurity Job Simulation</p>
+                    <h3>🧪 Quality Assurance</h3>
+                    <p><strong>Jira, TestRail, Slack:</strong> Experienced in game testing, bug tracking, and quality assurance processes. Skilled in creating detailed test cases and reports.</p>
                 </div>
 
                 <div class="skill-card">
-                    <h3>Forage - Accenture</h3>
-                    <p>✓ Data Analytics and Visualization Job Simulation</p>
+                    <h3>🤖 AI & Machine Learning</h3>
+                    <p><strong>OpenCV, Deep Learning, XGBoost:</strong> Hands-on experience with image processing, neural networks, and machine learning model deployment.</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🛠️ Tools & Technologies</h3>
+                    <p><strong>Git, VS Code, PyCharm:</strong> Proficient with version control systems and modern development environments for efficient workflow.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Professional Experience -->
-    <section id="experience" class="section">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>Game QA Tester</h3>
-                <p class="meta">Indium Software | November 2025 – Present</p>
-                <ul>
-                    <li>Tested PC game builds for functionality, stability, visual issues, and overall gameplay quality</li>
-                    <li>Logged detailed bug reports in Jira with clear steps, video evidence, and reproducible scenarios</li>
-                    <li>Collaborated with development teams to ensure high-quality game releases</li>
-                    <li>Tools: Jira, TestRail, Slack</li>
-                </ul>
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>EchoOS - Cross-Platform Operating System</h3>
+                    <p class="meta">Open Source Project | 2025</p>
+                    <ul>
+                        <li>Developed a cross-platform operating system with modern architecture</li>
+                        <li>Implemented core OS functionalities and system management features</li>
+                        <li>Built with focus on performance, security, and user experience</li>
+                        <li>Open source project available on GitHub</li>
+                    </ul>
+                    <a href="https://github.com/MishalScripts/EchoOS-CrossPlatform" target="_blank" class="cta-btn" style="margin-top: 15px; display: inline-block; padding: 10px 20px; font-size: 0.9rem;">View on GitHub →</a>
+                </div>
+
+                <div class="card">
+                    <h3>Stress Detection System</h3>
+                    <p class="meta">Research Project | Published at IC3C-2025</p>
+                    <ul>
+                        <li>Designed stress-level detection using Python, OpenCV, DNN, LBP, XGBoost, and FACS</li>
+                        <li>Analyzed facial cues for accurate stress classification</li>
+                        <li>Research officially selected for presentation at IC3C-2025 conference</li>
+                        <li>Achieved high accuracy in real-time stress detection</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>QR Code Safety Detection System</h3>
+                    <p class="meta">Security Application | 2024</p>
+                    <ul>
+                        <li>Developed security application for analyzing unsafe or malicious QR codes</li>
+                        <li>Verifies QR code authenticity and identifies phishing/malware threats</li>
+                        <li>Real-time detection and user safety enhancement</li>
+                        <li>Implemented advanced pattern recognition algorithms</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <div class="card">
-                <h3>Artificial Intelligence Intern</h3>
-                <p class="meta">CodSoft | September 2024 – October 2024</p>
-                <ul>
-                    <li>Independently developed AI-based solutions to enhance workflow efficiency</li>
-                    <li>Focused on training and deploying machine learning models</li>
-                    <li>Implemented deep learning algorithms for real-world applications</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Web Development Intern</h3>
-                <p class="meta">SkillCraft Technology | September 2024 – October 2024</p>
-                <ul>
-                    <li>Designed and optimized user interfaces for web applications</li>
-                    <li>Worked on front-end development using HTML, CSS, JavaScript</li>
-                    <li>Received a Letter of Recommendation for reliable performance</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Skills -->
-    <section id="skills" class="section">
-        <h2 class="section-title">Technical Skills & Proficiency</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>🔒 Cybersecurity</h3>
-                <p>Experienced in conducting risk assessments and implementing security protocols to safeguard data. Skilled in analyzing cyber threats, vulnerability assessment, and ethical hacking.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>💻 Programming</h3>
-                <p><strong>Java, Python:</strong> Proficient in writing clean and efficient code for various applications. Strong foundation in object-oriented programming and algorithm design.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>🌐 Web Development</h3>
-                <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Expert in creating responsive web designs and managing relational databases. Experience with modern web frameworks.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>🧪 Quality Assurance</h3>
-                <p><strong>Jira, TestRail, Slack:</strong> Experienced in game testing, bug tracking, and quality assurance processes. Skilled in creating detailed test cases and reports.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>🤖 AI & Machine Learning</h3>
-                <p><strong>OpenCV, Deep Learning, XGBoost:</strong> Hands-on experience with image processing, neural networks, and machine learning model deployment.</p>
-            </div>
-
-            <div class="skill-card">
-                <h3>🛠️ Tools & Technologies</h3>
-                <p><strong>Git, VS Code, PyCharm:</strong> Proficient with version control systems and modern development environments for efficient workflow.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <h3>EchoOS - Cross-Platform Operating System</h3>
-                <p class="meta">Open Source Project | 2025</p>
-                <ul>
-                    <li>Developed a cross-platform operating system with modern architecture</li>
-                    <li>Implemented core OS functionalities and system management features</li>
-                    <li>Built with focus on performance, security, and user experience</li>
-                    <li>Open source project available on GitHub</li>
-                </ul>
-                <a href="https://github.com/MishalScripts/EchoOS-CrossPlatform" target="_blank" class="cta-btn" style="margin-top: 15px; display: inline-block; padding: 10px 20px; font-size: 0.9rem;">View on GitHub →</a>
-            </div>
-
-            <div class="card">
-                <h3>Stress Detection System</h3>
-                <p class="meta">Research Project | Published at IC3C-2025</p>
-                <ul>
-                    <li>Designed stress-level detection using Python, OpenCV, DNN, LBP, XGBoost, and FACS</li>
-                    <li>Analyzed facial cues for accurate stress classification</li>
-                    <li>Research officially selected for presentation at IC3C-2025 conference</li>
-                    <li>Achieved high accuracy in real-time stress detection</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>QR Code Safety Detection System</h3>
-                <p class="meta">Security Application | 2024</p>
-                <ul>
-                    <li>Developed security application for analyzing unsafe or malicious QR codes</li>
-                    <li>Verifies QR code authenticity and identifies phishing/malware threats</li>
-                    <li>Real-time detection and user safety enhancement</li>
-                    <li>Implemented advanced pattern recognition algorithms</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recommendations Section -->
-    <section id="recommendations" class="section">
-        <h2 class="section-title">Recommendations & Testimonials</h2>
-        
-        <!-- Sample Recommendations -->
-        <div class="recommendations-display">
-            <div class="recommendation-card">
-                <p class="author">Dr. Rajesh Kumar</p>
-                <p class="position">Professor, B.M.S. Institute of Technology</p>
-                <p class="message">"Mishal has consistently demonstrated exceptional technical skills and a strong work ethic. His research on stress detection using deep learning was outstanding and showed great innovation. He's a dedicated student with a bright future ahead."</p>
-            </div>
-
-            <div class="recommendation-card">
-                <p class="author">Priya Sharma</p>
-                <p class="position">Senior QA Lead, Indium Software</p>
-                <p class="message">"Working with Mishal has been a pleasure. His attention to detail in game testing and ability to document bugs comprehensively has been invaluable to our team. He quickly adapted to our workflow and consistently delivers quality work."</p>
-            </div>
-
-            <div class="recommendation-card">
-                <p class="author">Arjun Mehta</p>
-                <p class="position">Tech Lead, SkillCraft Technology</p>
-                <p class="message">"Mishal's web development skills are impressive. During his internship, he created responsive and user-friendly interfaces that exceeded our expectations. His eagerness to learn and problem-solving abilities make him stand out."</p>
-            </div>
-
-            <div class="recommendation-card">
-                <p class="author">Sarah Johnson</p>
-                <p class="position">AI Research Scientist, CodSoft</p>
-                <p class="message">"Mishal's work on AI-based solutions during his internship was remarkable. He independently developed and deployed machine learning models that significantly improved our workflow efficiency. His technical acumen and innovative thinking are commendable."</p>
-            </div>
-
-            <div class="recommendation-card">
-                <p class="author">Vikram Singh</p>
-                <p class="position">Cybersecurity Consultant</p>
-                <p class="message">"I've had the opportunity to collaborate with Mishal on security projects. His understanding of cybersecurity principles and ability to implement robust security protocols is impressive for someone at his stage. Highly recommended!"</p>
-            </div>
-        </div>
-
-        <!-- Recommendation Form -->
-        <div class="recommendation-form">
-            <h3 style="color: var(--netflix-red); margin-bottom: 20px; text-align: center;">Share Your Recommendation</h3>
-            <p style="color: var(--text-gray); text-align: center; margin-bottom: 30px;">I'd love to hear your thoughts, suggestions, or professional recommendations!</p>
+        <!-- Recommendations Section -->
+        <section id="recommendations" class="section">
+            <h2 class="section-title">Get In Touch</h2>
             
-            <form id="recommendationForm">
-                <div class="form-group">
-                    <label for="name">Your Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            <!-- Recommendation Form -->
+            <div class="recommendation-form">
+                <h3 style="color: var(--netflix-red); margin-bottom: 20px; text-align: center;">Send Me a Message</h3>
+                <p style="color: var(--text-gray); text-align: center; margin-bottom: 30px;">Have a project in mind or want to collaborate? Feel free to reach out!</p>
+                
+                <form id="recommendationForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project, idea, or just say hi..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Thank you for your message! I'll get back to you soon.
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Your Email *</label>
-                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="position">Your Position/Title *</label>
-                    <input type="text" id="position" name="position" required placeholder="e.g., Senior Developer, Professor">
-                </div>
-
-                <div class="form-group">
-                    <label for="company">Company/Organization *</label>
-                    <input type="text" id="company" name="company" required placeholder="Your company or organization">
-                </div>
-
-                <div class="form-group">
-                    <label for="relationship">How do you know me? *</label>
-                    <select id="relationship" name="relationship" required>
-                        <option value="">Select...</option>
-                        <option value="colleague">Colleague</option>
-                        <option value="manager">Manager/Supervisor</option>
-                        <option value="professor">Professor/Teacher</option>
-                        <option value="client">Client</option>
-                        <option value="peer">Peer/Classmate</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Your Recommendation *</label>
-                    <textarea id="message" name="message" required placeholder="Share your professional recommendation, feedback, or testimonial..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Recommendation</button>
-            </form>
-
-            <div class="success-message" id="successMessage">
-                ✅ Thank you for your recommendation! Your feedback has been received and will be reviewed shortly.
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <p style="font-size: 1.2rem; font-weight: 600; color: var(--netflix-red); margin-bottom: 15px;">M A MOHAMMED MISHAL</p>
-        <p>Game QA Tester | Information Science Engineer | AI Enthusiast</p>
-        <p>📍 Bangalore, Karnataka | 📞 +91 8660455157 | ✉️ 11b51570mishal@gmail.com</p>
-        <div style="margin-top: 20px;">
-            <a href="https://github.com/mishalscripts" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">GitHub</a>
-            <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">LinkedIn</a>
-        </div>
-        <p style="margin-top: 20px; color: #666;">&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <p style="font-size: 1.2rem; font-weight: 600; color: var(--netflix-red); margin-bottom: 15px;">M A MOHAMMED MISHAL</p>
+            <p>Game QA Tester | Information Science Engineer | AI Enthusiast</p>
+            <p>📍 Bangalore, Karnataka | 📞 +91 8660455157 | ✉️ 11b51570mishal@gmail.com</p>
+            <div style="margin-top: 20px;">
+                <a href="https://github.com/mishalscripts" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">GitHub</a>
+                <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">LinkedIn</a>
+            </div>
+            <p style="margin-top: 20px; color: #666;">&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
+        </footer>
+    </div>
 
     <script>
+        // Create particles
+        function createParticles() {
+            const bg = document.querySelector('.animated-bg');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                bg.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
@@ -1094,10 +1251,10 @@
             });
         });
 
-        // Scroll Animation
+        // Smooth Scroll Animation with Intersection Observer
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1112,25 +1269,6 @@
             observer.observe(section);
         });
 
-        // Card Animation on Scroll
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.card, .skill-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease-out';
-            cardObserver.observe(card);
-        });
-
         // Form Submission
         document.getElementById('recommendationForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1138,17 +1276,15 @@
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                position: document.getElementById('position').value,
-                company: document.getElementById('company').value,
-                relationship: document.getElementById('relationship').value,
+                subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value,
                 timestamp: new Date().toISOString()
             };
 
             // Store in localStorage
-            let recommendations = JSON.parse(localStorage.getItem('recommendations') || '[]');
-            recommendations.push(formData);
-            localStorage.setItem('recommendations', JSON.stringify(recommendations));
+            let messages = JSON.parse(localStorage.getItem('messages') || '[]');
+            messages.push(formData);
+            localStorage.setItem('messages', JSON.stringify(messages));
 
             // Show success message
             document.getElementById('successMessage').style.display = 'block';
@@ -1175,15 +1311,6 @@
                     });
                 }
             });
-        });
-
-        // Parallax effect on hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
         });
     </script>
 </body>
