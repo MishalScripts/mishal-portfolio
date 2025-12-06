@@ -47,14 +47,14 @@ const Hero = () => {
           <div className="profile-card">
             <div className="profile-img-container">
               <img 
-                src="https://raw.githubusercontent.com/MishalScripts/mishal-portfolio/main/mishal.jpg" 
+                src="https://raw.githubusercontent.com/MishalScripts/mishal-portfolio/main/photo.jpg" 
                 alt="Mishal" 
                 className="profile-img"
               />
             </div>
             <div className="contact-info">
-              <p>📧 <a href="mailto:11b51570mishal@gmail.com">11b51570mishal@gmail.com</a></p>
-              <p>📍 India</p>
+              <p>📧 <a href="mailto:officialzenvomart@gmail.com">officialzenvomart@gmail.com</a></p>
+              <p>📍 Bangalore, Karnataka, India</p>
               <p>💼 Full Stack Developer</p>
             </div>
           </div>
