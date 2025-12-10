@@ -1,0 +1,59 @@
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.cert-item {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  padding: 30px;
+  border-radius: 16px;
+  border-left: 4px solid var(--netflix-red);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.cert-item:hover {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+  transform: translateX(10px);
+  border-left-width: 6px;
+  box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3);
+}
+
+.cert-item h4 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.cert-item p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cert-item::after {
+  content: '🔍 Click to view';
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 12px;
+  color: var(--netflix-red);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 700;
+}
+
+.cert-item:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
