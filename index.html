@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M A Mohammed Mishal - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,10 +13,11 @@
         }
 
         :root {
-            --netflix-red: #E50914;
-            --netflix-black: #000000;
-            --dark-bg: #0a0a0a;
-            --card-bg: #141414;
+            --netflix-red: #F2A93B;
+            --accent-cyan: #4FD1C5;
+            --netflix-black: #0B0E14;
+            --dark-bg: #0B0E14;
+            --card-bg: #12161F;
             --text-white: #ffffff;
             --text-gray: #b3b3b3;
         }
@@ -229,6 +230,7 @@
         }
 
         nav .logo {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--netflix-red);
@@ -301,7 +303,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--netflix-black) 0%, #1a0000 100%);
+            background: linear-gradient(135deg, var(--netflix-black) 0%, #191204 100%);
             position: relative;
             overflow: hidden;
             padding: 120px 20px 80px;
@@ -312,7 +314,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(242, 169, 59, 0.12) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
         }
 
@@ -324,9 +326,9 @@
         .hero-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             gap: 60px;
-            max-width: 1400px;
+            max-width: 900px;
             width: 100%;
             z-index: 2;
             flex-wrap: wrap;
@@ -335,6 +337,11 @@
         .hero-text {
             flex: 1;
             min-width: 300px;
+            text-align: center;
+        }
+
+        .contact-links, .cta-buttons {
+            justify-content: center;
         }
 
         .current-role {
@@ -353,7 +360,7 @@
 
         .current-role:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(229, 9, 20, 0.6);
+            box-shadow: 0 5px 20px rgba(242, 169, 59, 0.6);
         }
 
         @keyframes slideRight {
@@ -368,22 +375,20 @@
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4.2rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--netflix-red), #ff4444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #F5F6F8;
             animation: slideDown 1s ease-out;
-            line-height: 1.2;
+            line-height: 1.15;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .hero h1:hover {
             transform: scale(1.02);
-            filter: drop-shadow(0 0 20px rgba(229, 9, 20, 0.5));
+            filter: drop-shadow(0 0 20px rgba(242, 169, 59, 0.5));
         }
 
         @keyframes slideDown {
@@ -449,46 +454,111 @@
         .profile-container {
             position: relative;
             width: 380px;
-            height: 480px;
+            height: 380px;
             cursor: pointer;
+            border-radius: 20px;
+            animation: photoFloat 3.5s ease-in-out infinite;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 15px 25px rgba(242, 169, 59, 0.18));
+            }
+            50% {
+                transform: translateY(-14px);
+                filter: drop-shadow(0 32px 35px rgba(242, 169, 59, 0.30));
+            }
         }
 
         .profile-container::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, var(--netflix-red), #ff4444, var(--netflix-red));
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, var(--netflix-red), var(--accent-cyan));
             border-radius: 20px;
             z-index: -1;
-            animation: rotate-gradient 3s linear infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes rotate-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            opacity: 0.6;
         }
 
         .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center center;
             border-radius: 15px;
-            box-shadow: 0 25px 70px rgba(229, 9, 20, 0.5);
+            background-color: var(--netflix-black);
+            box-shadow: 0 25px 70px rgba(242, 169, 59, 0.35);
             transition: all 0.5s ease;
             position: relative;
             z-index: 1;
         }
 
         .profile-img:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 35px 90px rgba(229, 9, 20, 0.7);
+            transform: scale(1.03);
+            box-shadow: 0 35px 90px rgba(79, 209, 197, 0.4);
         }
+
+        /* Pipeline Status Terminal */
+        .terminal-section {
+            display: flex;
+            justify-content: center;
+            padding: 20px 20px 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .terminal {
+            width: 100%;
+            max-width: 560px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid #232A38;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .term-bar {
+            background: #171C27;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #232A38;
+        }
+
+        .term-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+        .term-bar .dot.r { background: #F2555A; }
+        .term-bar .dot.y { background: #F2A93B; }
+        .term-bar .dot.g { background: #C97B6D; }
+        .term-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7B8496; margin-left: 8px; }
+
+        .term-body {
+            padding: 22px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13.5px;
+            line-height: 1.9;
+        }
+
+        .term-body .prompt { color: var(--accent-cyan); }
+        .term-body .cmd { color: #E8EAED; }
+        .term-body .out { color: #7B8496; padding-left: 18px; }
+        .gate { display: flex; justify-content: space-between; padding: 3px 18px; flex-wrap: wrap; gap: 4px; }
+        .gate .name { color: #9AA4B5; }
+        .gate .pass { color: var(--accent-cyan); }
+        .term-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--netflix-red);
+            vertical-align: middle;
+            margin-left: 4px;
+            animation: cursorBlink 1s steps(2) infinite;
+        }
+        @keyframes cursorBlink { 50% { opacity: 0; } }
 
         .contact-links {
             display: flex;
@@ -1102,7 +1172,7 @@
 
             .profile-container {
                 width: 300px;
-                height: 380px;
+                height: 300px;
             }
 
             .contact-links,
@@ -1158,6 +1228,7 @@
             <div class="logo">MISHAL</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -1175,10 +1246,10 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="current-role">🎮 Currently: Game QA Tester at Indium Software</span>
+                    <span class="current-role">🔐 Currently: Associate Security Engineer at SECOPS24</span>
                     <h1>M A MOHAMMED<br>MISHAL</h1>
-                    <p class="role">Information Science Engineer | AI Enthusiast | Cybersecurity Specialist</p>
-                    <p class="summary">A goal-oriented Information Science Engineering student with a passion for mastering emerging technologies. Skilled at transforming ideas into actionable projects, with a strong focus on innovation. Dedicated to building a career that merges technical expertise with real-world impact.</p>
+                    <p class="role">Security Engineer | Cloud Security & DevSecOps</p>
+                    <p class="summary">Security Engineer with hands-on experience across AWS cloud infrastructure, Terraform automation, CI/CD security, container security, and vulnerability scanning. Progressed from DevSecOps Engineer Intern to Associate Security Engineer at SECOPS24, working on an AWS-based GitHub-to-cloud deployment platform and its security tooling. Currently pursuing an M.Tech in Cyber Security at IIIT Sri City alongside my role.</p>
                     
                     <div class="contact-links">
                         <a href="tel:+918660455157" class="contact-btn">📞 +91 8660455157</a>
@@ -1187,22 +1258,40 @@
                     </div>
 
                     <div class="cta-buttons">
-                        <div class="github-dropdown">
-                            <button class="cta-btn">🔗 GitHub Profiles</button>
-                            <div class="github-dropdown-content">
-                                <a href="https://github.com/mishalscripts" target="_blank">📂 mishalscripts</a>
-                                <a href="https://github.com/MishalHQ" target="_blank">📂 MishalHQ</a>
-                            </div>
-                        </div>
+                        <a href="https://github.com/MishalHQ" target="_blank" class="cta-btn">🔗 GitHub</a>
                         <a href="#resume" class="cta-btn secondary">📄 View Resume</a>
                     </div>
                 </div>
 
-                <div class="hero-image">
-                    <div class="profile-container">
-                        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/1278d860-2d54-4e85-8744-f8f7f78be713/2025-12-06T14-05-45-028Z-5e88f96c-chat-image-1765029944997-0.jpg" alt="M A Mohammed Mishal" class="profile-img">
-                    </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Status Terminal -->
+        <section class="terminal-section">
+            <div class="terminal">
+                <div class="term-bar">
+                    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+                    <div class="term-title">mishal@secops24 — pipeline</div>
                 </div>
+                <div class="term-body">
+                    <div><span class="prompt">$</span> <span class="cmd">whoami</span></div>
+                    <div class="out">associate_security_engineer</div>
+                    <div style="margin-top:10px;"><span class="prompt">$</span> <span class="cmd">pipeline --status</span></div>
+                    <div class="gate"><span class="name">secret-scan (trufflehog)</span><span class="pass">✓ pass</span></div>
+                    <div class="gate"><span class="name">vuln-scan (amazon inspector)</span><span class="pass">✓ pass</span></div>
+                    <div class="gate"><span class="name">iac-scan (checkov)</span><span class="pass">✓ pass</span></div>
+                    <div style="margin-top:10px;"><span class="prompt">$</span> <span class="term-cursor"></span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Goals -->
+        <section id="about" class="section">
+            <h2 class="section-title">🎯 Career Focus</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-gray);">
+                    I'm focused on building a career in cloud security and DevSecOps — the intersection of infrastructure automation and security engineering. My work at SECOPS24 has centered on securing AWS-based deployment platforms: integrating CI/CD security gates, working with Terraform-managed infrastructure, and thinking through the reliability side of security tooling, not just the detection side. I'm currently deepening that foundation through an executive M.Tech in Cyber Security at IIIT Sri City, alongside my role. Longer term, I want to keep growing as a security engineer who understands both how systems are built and how they're attacked — and to keep closing that gap through certifications like AWS Security Specialty and CEH.
+                </p>
             </div>
         </section>
 
@@ -1215,13 +1304,13 @@
                 <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">View and download my complete professional resume</p>
                 
                 <iframe 
-                    src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/1278d860-2d54-4e85-8744-f8f7f78be713/2025-12-06T14-21-18-172Z-1b06f067-M_A_Mohammed_Mishal_Resume.pdf" 
+                    src="resume.pdf" 
                     class="resume-iframe"
                     title="M A Mohammed Mishal Resume">
                 </iframe>
                 
                 <div class="resume-buttons">
-                    <a href="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/1278d860-2d54-4e85-8744-f8f7f78be713/2025-12-06T14-21-18-172Z-1b06f067-M_A_Mohammed_Mishal_Resume.pdf" target="_blank" class="cta-btn" download>📥 Download PDF</a>
+                    <a href="resume.pdf" target="_blank" class="cta-btn" download>📥 Download PDF</a>
                     <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" class="cta-btn secondary">👁️ View on LinkedIn</a>
                 </div>
             </div>
@@ -1231,15 +1320,15 @@
                 <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🎓 Education</h3>
                 <div class="cards-grid">
                     <div class="card">
-                        <h3>Bachelor of Engineering</h3>
-                        <p class="meta">Information Science Engineering | 2022 - 2026</p>
-                        <p style="color: var(--text-gray);">B.M.S. Institute of Technology, Bangalore</p>
+                        <h3>M.Tech, Cyber Security</h3>
+                        <p class="meta">IIIT Sri City | Aug 2026 – Present</p>
+                        <p style="color: var(--text-gray);">Executive program for working professionals</p>
                     </div>
 
                     <div class="card">
-                        <h3>Higher Secondary School</h3>
-                        <p class="meta">P.C.M.CS | 2022</p>
-                        <p style="color: var(--text-gray);">International Indian School, Riyadh, Saudi Arabia</p>
+                        <h3>Bachelor of Engineering</h3>
+                        <p class="meta">Information Science Engineering | 2022 - 2026</p>
+                        <p style="color: var(--text-gray);">BMS Institute of Technology and Management, Bangalore</p>
                     </div>
                 </div>
             </div>
@@ -1249,18 +1338,23 @@
                 <h3 style="font-size: 2rem; color: var(--netflix-red); margin-bottom: 30px; text-align: center;">🏆 Certifications</h3>
                 <div class="skills-grid">
                     <div class="skill-card">
+                        <h3>AWS</h3>
+                        <p>✓ AWS Certified Cloud Practitioner<br>✓ AWS Certified Security – Specialty (Pursuing)</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>EC-Council</h3>
+                        <p>✓ Certified Ethical Hacker (CEH) — Exam Preparation</p>
+                    </div>
+
+                    <div class="skill-card">
                         <h3>IIT Kharagpur - NPTEL</h3>
-                        <p>✓ E-Business Certification<br>✓ Ethical Hacking Certification</p>
+                        <p>✓ Ethical Hacking Certification</p>
                     </div>
 
                     <div class="skill-card">
                         <h3>Infosys Springboard</h3>
-                        <p>✓ Software Engineering Fundamentals<br>✓ Advanced Features in Java</p>
-                    </div>
-
-                    <div class="skill-card">
-                        <h3>Simplilearn</h3>
-                        <p>✓ Ethical Hacking 101</p>
+                        <p>✓ Software Engineering Fundamentals: Developing and Testing</p>
                     </div>
 
                     <div class="skill-card">
@@ -1269,8 +1363,8 @@
                     </div>
 
                     <div class="skill-card">
-                        <h3>Forage - Accenture</h3>
-                        <p>✓ Data Analytics and Visualization Job Simulation</p>
+                        <h3>AttackIQ</h3>
+                        <p>✓ Foundations of AI Security</p>
                     </div>
                 </div>
             </div>
@@ -1281,29 +1375,58 @@
             <h2 class="section-title">Professional Experience</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <h3>Game QA Tester</h3>
-                    <p class="meta">Indium Software | November 2025 – Present</p>
+                    <h3>Associate Security Engineer</h3>
+                    <p class="meta">SECOPS24 | Aug 2026 – Present</p>
+                    <p style="color: var(--text-gray); font-style: italic; margin-bottom: 10px;">Promoted from DevSecOps Engineer Intern</p>
                     <ul>
-                        <li>Tested PC game builds for functionality, stability, visual issues, and overall gameplay quality</li>
-                        <li>Logged detailed bug reports in Jira with clear steps, video evidence, and reproducible scenarios</li>
-                        <li>Collaborated with development teams to ensure high-quality game releases</li>
+                        <li>Contribute to security and reliability improvements for an AWS-based platform that automates deployment of GitHub repositories using ECS/Fargate, Application Load Balancer, and Cognito</li>
+                        <li>Implement alert deduplication and cooldown logic to reduce duplicate CloudWatch alerts during deployment failures</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>DevSecOps Engineer Intern</h3>
+                    <p class="meta">SECOPS24 | Jun 2026 – Jul 2026</p>
+                    <ul>
+                        <li>Built Terraform-based AWS infrastructure supporting automated deployment of GitHub repositories into secure cloud environments</li>
+                        <li>Integrated three blocking security gates into CI/CD pipelines — secret detection (TruffleHog), vulnerability scanning (Amazon Inspector), IaC scanning (Checkov) — enforced on every pipeline run</li>
+                        <li>Contributed to a FastAPI-based Code Intelligence Engine that analyzes GitHub repositories and automatically generates Dockerfiles and deployment manifests</li>
+                        <li>Contributed to UI improvements and a pipeline log viewer used for deployment debugging</li>
+                        <li>Resolved four configuration and pipeline issues (Cognito/ALB integration, missing ECS deploy step, hardcoded AWS account ID, unpinned security tool version) surfaced through peer code review prior to deployment</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Information Security Intern</h3>
+                    <p class="meta">RankBook | Feb 2026 – May 2026</p>
+                    <ul>
+                        <li>Worked on a malware command-and-control emulation platform used to simulate cyberattacks and validate security monitoring and detection systems</li>
+                        <li>Used a container image threat scanner to analyze 10+ container images and 20+ packages, identifying vulnerabilities for remediation</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>QA Tester</h3>
+                    <p class="meta">Indium Software | Nov 2025 – Jan 2026</p>
+                    <ul>
+                        <li>Tested 4+ PC game builds for functionality, stability, visual defects, and overall gameplay quality</li>
+                        <li>Logged 100+ reproducible bugs in Jira with clear reproduction steps and supporting video evidence</li>
                         <li>Tools: Jira, TestRail, Slack</li>
                     </ul>
                 </div>
 
                 <div class="card">
                     <h3>Artificial Intelligence Intern</h3>
-                    <p class="meta">CodSoft | September 2024 – October 2024</p>
+                    <p class="meta">CodSoft | Sep 2024 – Oct 2024</p>
                     <ul>
-                        <li>Independently developed AI-based solutions to enhance workflow efficiency</li>
-                        <li>Focused on training and deploying machine learning models</li>
-                        <li>Implemented deep learning algorithms for real-world applications</li>
+                        <li>Built and evaluated ML models in Python on structured datasets</li>
+                        <li>Contributed to automation-focused workflow tasks</li>
                     </ul>
                 </div>
 
                 <div class="card">
                     <h3>Web Development Intern</h3>
-                    <p class="meta">SkillCraft Technology | September 2024 – October 2024</p>
+                    <p class="meta">SkillCraft Technology | Sep 2024 – Oct 2024</p>
                     <ul>
                         <li>Designed and optimized user interfaces for web applications</li>
                         <li>Worked on front-end development using HTML, CSS, JavaScript</li>
@@ -1318,33 +1441,33 @@
             <h2 class="section-title">Technical Skills & Proficiency</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>🔒 Cybersecurity</h3>
-                    <p>Experienced in conducting risk assessments and implementing security protocols to safeguard data. Skilled in analyzing cyber threats, vulnerability assessment, and ethical hacking.</p>
+                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <p><strong>AWS, Terraform:</strong> ECS/Fargate, ECR, ALB, Cognito, Lambda, EventBridge, DynamoDB, CloudWatch. Hands-on with Terraform-managed infrastructure supporting automated cloud deployment.</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🔒 DevSecOps / AppSec</h3>
+                    <p>CI/CD security, secret detection, vulnerability scanning, IaC scanning, container security, vulnerability assessment, OWASP Top 10, threat analysis, malware simulation.</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>🛠️ Security Tools</h3>
+                    <p>TruffleHog, Amazon Inspector, Checkov, Docker, GitHub, GitHub Actions, Jira, Kali Linux.</p>
                 </div>
 
                 <div class="skill-card">
                     <h3>💻 Programming</h3>
-                    <p><strong>Java, Python:</strong> Proficient in writing clean and efficient code for various applications. Strong foundation in object-oriented programming and algorithm design.</p>
+                    <p><strong>Python:</strong> Used across security tooling, automation scripts, and applied ML projects.</p>
                 </div>
 
                 <div class="skill-card">
                     <h3>🌐 Web Development</h3>
-                    <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Expert in creating responsive web designs and managing relational databases. Experience with modern web frameworks.</p>
+                    <p><strong>HTML, CSS, JavaScript, MySQL:</strong> Front-end development experience from earlier web development internship work.</p>
                 </div>
 
                 <div class="skill-card">
                     <h3>🧪 Quality Assurance</h3>
-                    <p><strong>Jira, TestRail, Slack:</strong> Experienced in game testing, bug tracking, and quality assurance processes. Skilled in creating detailed test cases and reports.</p>
-                </div>
-
-                <div class="skill-card">
-                    <h3>🤖 AI & Machine Learning</h3>
-                    <p><strong>OpenCV, Deep Learning, XGBoost:</strong> Hands-on experience with image processing, neural networks, and machine learning model deployment.</p>
-                </div>
-
-                <div class="skill-card">
-                    <h3>🛠️ Tools & Technologies</h3>
-                    <p><strong>Git, VS Code, PyCharm:</strong> Proficient with version control systems and modern development environments for efficient workflow.</p>
+                    <p><strong>Jira, TestRail, Slack:</strong> Game testing, bug tracking, and reproducible defect reporting from QA testing experience.</p>
                 </div>
             </div>
         </section>
@@ -1354,37 +1477,34 @@
             <h2 class="section-title">Featured Projects</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <h3>EchoOS - Cross-Platform Operating System</h3>
-                    <p class="meta">Open Source Project | 2025</p>
-                    <ul>
-                        <li>Developed a cross-platform operating system with modern architecture</li>
-                        <li>Implemented core OS functionalities and system management features</li>
-                        <li>Built with focus on performance, security, and user experience</li>
-                        <li>Open source project available on GitHub</li>
-                    </ul>
-                    <a href="https://github.com/MishalScripts/EchoOS-CrossPlatform" target="_blank" class="cta-btn" style="margin-top: 15px; display: inline-block; padding: 10px 20px; font-size: 0.9rem;">View on GitHub →</a>
-                </div>
-
-                <div class="card">
-                    <h3>Stress Detection System</h3>
-                    <p class="meta">Research Project | Published at IC3C-2025</p>
-                    <ul>
-                        <li>Designed stress-level detection using Python, OpenCV, DNN, LBP, XGBoost, and FACS</li>
-                        <li>Analyzed facial cues for accurate stress classification</li>
-                        <li>Research officially selected for presentation at IC3C-2025 conference</li>
-                        <li>Achieved high accuracy in real-time stress detection</li>
-                    </ul>
-                </div>
-
-                <div class="card">
                     <h3>QR Code Safety Detection System</h3>
-                    <p class="meta">Security Application | 2024</p>
+                    <p class="meta">3rd Prize, Hackathon | 2024</p>
                     <ul>
-                        <li>Developed security application for analyzing unsafe or malicious QR codes</li>
-                        <li>Verifies QR code authenticity and identifies phishing/malware threats</li>
-                        <li>Real-time detection and user safety enhancement</li>
-                        <li>Implemented advanced pattern recognition algorithms</li>
+                        <li>Python application analyzing 10+ QR codes/URLs for phishing and malicious redirections</li>
+                        <li>Uses authenticity and vulnerability analysis to identify malicious QR codes</li>
                     </ul>
+                    <a href="https://github.com/MishalHQ/QR-Code-Safety-Detection-System" target="_blank" class="cta-btn" style="margin-top: 15px; display: inline-block; padding: 10px 20px; font-size: 0.9rem;">View on GitHub →</a>
+                </div>
+
+                <div class="card">
+                    <h3>Echo OS — Voice Command System for Windows Automation</h3>
+                    <p class="meta">3rd Prize, Department Award | Team Project</p>
+                    <ul>
+                        <li>Team project; contributed to a voice-controlled Windows automation system</li>
+                        <li>Executes 30+ Windows tasks through speech commands</li>
+                    </ul>
+                    <a href="https://github.com/MishalHQ/EchoOs" target="_blank" class="cta-btn" style="margin-top: 15px; display: inline-block; padding: 10px 20px; font-size: 0.9rem;">View on GitHub →</a>
+                </div>
+
+                <div class="card">
+                    <h3>Stress Detection Using Image Processing and Deep Learning</h3>
+                    <p class="meta">Published, IC3C-2025</p>
+                    <ul>
+                        <li>Stress-detection model using Python, OpenCV, DNN, LBP, and XGBoost</li>
+                        <li>Trained on 20,000+ facial images, achieving 92% classification accuracy</li>
+                        <li>Research published at IC3C-2025</li>
+                    </ul>
+                    <a href="https://github.com/MishalHQ/Stress-Detection" target="_blank" class="cta-btn" style="margin-top: 15px; display: inline-block; padding: 10px 20px; font-size: 0.9rem;">View on GitHub →</a>
                 </div>
             </div>
         </section>
@@ -1423,7 +1543,7 @@
                 </form>
 
                 <div class="success-message" id="successMessage">
-                    ✅ Thank you for your message! I'll get back to you soon.
+                    📧 Opening your email app now — just hit send to reach me!
                 </div>
             </div>
         </section>
@@ -1431,11 +1551,10 @@
         <!-- Footer -->
         <footer>
             <p style="font-size: 1.2rem; font-weight: 600; color: var(--netflix-red); margin-bottom: 15px;">M A MOHAMMED MISHAL</p>
-            <p>Game QA Tester | Information Science Engineer | AI Enthusiast</p>
-            <p>📍 Bangalore, Karnataka | 📞 +91 8660455157 | ✉️ 11b51570mishal@gmail.com</p>
+            <p>Security Engineer | Cloud Security & DevSecOps</p>
+            <p>📍 Bangalore, India | 📞 +91 8660455157 | ✉️ 11b51570mishal@gmail.com</p>
             <div style="margin-top: 20px;">
-                <a href="https://github.com/mishalscripts" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">GitHub (mishalscripts)</a>
-                <a href="https://github.com/MishalHQ" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">GitHub (MishalHQ)</a>
+                <a href="https://github.com/MishalHQ" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">GitHub</a>
                 <a href="https://www.linkedin.com/in/m-a-mohammed-mishal-1b473b265" target="_blank" style="color: var(--netflix-red); margin: 0 10px; text-decoration: none;">LinkedIn</a>
             </div>
             <p style="margin-top: 20px; color: #666;">&copy; 2025 M A Mohammed Mishal. All Rights Reserved.</p>
@@ -1566,25 +1685,23 @@
         // Form Submission
         document.getElementById('recommendationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toISOString()
-            };
 
-            let messages = JSON.parse(localStorage.getItem('messages') || '[]');
-            messages.push(formData);
-            localStorage.setItem('messages', JSON.stringify(messages));
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+            const mailtoLink = `mailto:11b51570mishal@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
 
             document.getElementById('successMessage').style.display = 'block';
             this.reset();
 
             setTimeout(() => {
                 document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
+            }, 6000);
 
             document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
