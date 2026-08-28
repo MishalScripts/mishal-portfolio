@@ -1,0 +1,79 @@
+.resume-section {
+  background: linear-gradient(145deg, rgba(229, 9, 20, 0.1), rgba(20, 20, 20, 0.6));
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 60px;
+  text-align: center;
+  margin-top: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .resume-section {
+  background: linear-gradient(145deg, rgba(229, 9, 20, 0.05), rgba(255, 255, 255, 0.9));
+}
+
+.resume-preview {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto 40px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(229, 9, 20, 0.4);
+}
+
+.resume-preview iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+  display: block;
+}
+
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-download {
+  padding: 20px 55px;
+  background: linear-gradient(135deg, var(--netflix-red), #c40812);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 35px rgba(229, 9, 20, 0.5);
+}
+
+.btn-download:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 50px rgba(229, 9, 20, 0.7);
+}
+
+@media (max-width: 768px) {
+  .resume-section {
+    padding: 30px 20px;
+    margin: 0;
+  }
+
+  .resume-preview iframe {
+    height: 600px;
+  }
+
+  .resume-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-download, .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
